@@ -3,6 +3,7 @@ import React from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from './Utils/colors';
 function Tournamentitem(props)
 {
    const navigation = useNavigation();
@@ -10,6 +11,7 @@ function Tournamentitem(props)
     const Toggle = () => {
        setIshowing(prevalue => !prevalue);
     }
+    
     const championships = props.leagues
     return(
         <>
@@ -23,7 +25,7 @@ function Tournamentitem(props)
              </View>
             <View style={styles.badge_xsm}>
                <Text>
-                  <Icon name="chevron-down-outline" size={20} styles={isshowing ? styles.rotate : null}></Icon>
+                  <Icon name="chevron-down-outline" size={20} style={isshowing ? styles.rotate : null}></Icon>
                </Text>
              </View>
            </View>
@@ -33,7 +35,7 @@ function Tournamentitem(props)
               {championships.map((items) => {
                 return(
                     <>
-                     <Pressable onPress={() => navigation.navigate(items.link)}>
+                     <Pressable onPress={() => navigation.navigate(items.link, {league_title:items.league_title, league_name:items.league_name})}>
                      <View style={styles.dropdown_item}>
                        <View style={styles.badge_sm}>
                          <Text>ic</Text>
@@ -51,7 +53,7 @@ function Tournamentitem(props)
 }
 const styles = StyleSheet.create({
     rotate:{
-     transform:"rotate(180deg)"
+   
     },
     display_none:{
      display:"none"

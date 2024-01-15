@@ -4,11 +4,16 @@ import {View, Text, StyleSheet, Pressable} from 'react-native'
 import { colors, sizes } from '../../components/Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
-import { user_balance } from '../../Redux/Slices/Betslice';
+import { user_balance, b_account } from '../../Redux/Slices/Betslice';
 import { useNavigation } from '@react-navigation/native';
 function Defaultbetslip(){
     const navigation = useNavigation()
     const acc_balance = useSelector(user_balance);
+    const bonus_acc = useSelector(b_account);
+    const isDecimal = (number) => {
+        const numberString = number.toString();
+        return numberString.includes(".");
+    }
     return(
         <>
          <Navtop></Navtop>
@@ -23,7 +28,7 @@ function Defaultbetslip(){
                  </View>
                    <View>
                    <Text style={styles.lable}>Deposite</Text>
-                   <Text style={styles.balc}> {acc_balance} ₣ </Text>
+                   <Text style={styles.balc}> {isDecimal(acc_balance) ? acc_balance.toFixed(2) : acc_balance} ₣ </Text>
                    </View>
                   </View>
                   <View>
@@ -32,6 +37,21 @@ function Defaultbetslip(){
                      </Text>
                   </View>
              </View>
+             </Pressable>
+             <Pressable>
+                <View style={styles.boxOne}>
+                    <View style={styles.childOne}>
+                        <View style={styles.badge}>
+                          <Text>
+                            <Icon name='cash-outline' size={25} style={styles.iconColor}></Icon> 
+                          </Text>
+                        </View>
+                        <View>
+                            <Text style={styles.lable}>Bonus Account</Text>
+                            <Text style={styles.balc}>{isDecimal(bonus_acc) ? bonus_acc.toFixed(2) : bonus_acc} ₣</Text>
+                        </View>
+                    </View>
+                </View>
              </Pressable>
              <Pressable >
              <View style={styles.boxOne}>
@@ -58,7 +78,7 @@ function Defaultbetslip(){
 }
 const styles = StyleSheet.create({
     balc:{
-         fontSize:sizes.size_16,
+         fontSize:sizes.size_20,
          fontWeight:"800",
          color:colors.text_color
     },
@@ -95,13 +115,14 @@ const styles = StyleSheet.create({
        justifyContent:'space-between',
        paddingHorizontal:sizes.size_5,
        flexDirection:"row",
-       marginTop:sizes.size_5,
-       paddingVertical:sizes.size_10
+       marginTop:sizes.size_10,
+       paddingVertical:sizes.size_10,
+       elevation:sizes.size_2
     },
     container:{
         flex:1,
         backgroundColor:colors.lighter_white,
-        paddingHorizontal:sizes.size_5
+        paddingHorizontal:sizes.size_8
     }
 })
 export default Defaultbetslip;

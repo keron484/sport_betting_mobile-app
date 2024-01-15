@@ -3,11 +3,22 @@ import {View, Text,  StyleSheet, Pressable, Image} from "react-native";
 import { colors, sizes } from './Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import BethistoryIcon from '../assets/icons/custom-icon';
 export const Bethistorybox =  (props) => {
   // creating a route by importing the usenavigation hook
+  //geting the id 
+  const id = props.id
   const navigation = useNavigation();
   const betdetails = () => {
-    navigation.navigate("betdetails", )
+    navigation.navigate("betdetails", {id:id})
+  }
+  const stakeAmount = props.stake;
+  const bonus = props.bonus_calcu;
+  const odds = props.totalOdds;
+  const potWinings = props.potential_wininings;
+  const isDecimal = (number) => {
+     const numberString = number.toString();
+     return numberString.includes(".");
   }
     return(
         <>
@@ -16,12 +27,14 @@ export const Bethistorybox =  (props) => {
                  <View style={styles.bet_desc}>
                    <View style={styles.desc_items}>
                       <View style={styles.badge_lg}>
-                        <Icon name='ticket-outline' size={35} style={styles.icon_color}></Icon>
+                         <BethistoryIcon />
                       </View>
                       <View>
-                      <Text style={styles.deslable_one}>ID:{props.betid}</Text>
+                      <Text style={styles.deslable_one}>ID:STNKCQKDNUST{props.id}</Text>
                       <Text style={styles.deslable_three}>Date: {props.date} {props.time} </Text>
-                      <Text style={styles.deslable_four}>{props.bettype}</Text>
+                       <View style={styles.pill}>
+                       <Text style={styles.pillLable}>{props.bettype}</Text>
+                       </View>
                       </View>
                    </View>
                    <View style={styles.icon_group}>
@@ -35,23 +48,23 @@ export const Bethistorybox =  (props) => {
              <View style={styles.betdetails}>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Odds</Text>
-                <Text style={styles.details_item}>{props.totalOdds}</Text>
+                <Text style={styles.details_item}>{isDecimal(odds) ? odds.toFixed(2) : odds}</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Stake</Text>
-                <Text style={styles.details_item}>{props.stake} ₣</Text>
+                <Text style={styles.details_item}>{isDecimal(stakeAmount) ? stakeAmount.toFixed(2) : stakeAmount} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Potential winnings</Text>
-                <Text style={styles.details_item}>{props.potential_wininings} ₣</Text>
+                <Text style={styles.details_item}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Bonus</Text>
-                <Text style={styles.details_item}>{props.bonus_calcu} ₣</Text>
+                <Text style={styles.details_item}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Status</Text>
-                <Text style={styles.details_item}>Accepted</Text>
+                <Text style={styles.statusValue}>Accepted</Text>
                </View>
              </View>
              </View>
@@ -63,6 +76,26 @@ export const Bethistorybox =  (props) => {
     )
 }
 const styles = StyleSheet.create({
+    statusValue:{
+       marginVertical:3,
+       fontSize:16,
+       fontWeight:"900",
+       color:"#4682b4"
+    },
+    pill:{
+      flexDirection:"row",
+      alignItems:"center",
+      justifyContent:"center",
+      backgroundColor:"#4682b4",
+      borderRadius:sizes.size_20,
+      width:"auto",
+      maxWidth:90
+    }, 
+    pillLable:{
+      fontSize:sizes.size_13,
+      fontWeight:"600",
+      color:colors.color_white
+    },
     input_box:{
         width:"73%",
         borderRadius:10,
@@ -147,18 +180,33 @@ const styles = StyleSheet.create({
   
 })
 export const Bonusbethistorybox = (props) =>{
+  const id = props.id;
+  const stakeAmount = props.stake;
+  const odds = props.totalOdds;
+  const potWinings = props.potential_wininings;
+  const isDecimal = (number) => {
+    const numberString = number.toString();
+    return numberString.includes(".");
+ }
+ const navigation = useNavigation();
+ const betdetailsBonus = () => {
+    navigation.navigate("betdetailsbonus", {id:id})
+ }
     return(
         <>
-                <View style={styles.bet_container}>
+           <Pressable onPress={betdetailsBonus}>
+           <View style={styles.bet_container}>
                  <View style={styles.bet_desc}>
                    <View style={styles.desc_items}>
                       <View style={styles.badge_lg}>
-                        <Icon name='ticket-outline' size={35} style={styles.icon_color}></Icon>
+                        <BethistoryIcon />
                       </View>
                       <View>
-                      <Text style={styles.deslable_one}>ID:{props.betid}</Text>
+                      <Text style={styles.deslable_one}>ID:STNKCQKDNUST{props.id}</Text>
                       <Text style={styles.deslable_three}>Date: {props.date} {props.time} </Text>
-                      <Text style={styles.deslable_four}>{props.bettype}</Text>
+                      <View style={styles.pill}>
+                       <Text style={styles.pillLable}>{props.bettype}</Text>
+                       </View>
                       </View>
                    </View>
                    <View style={styles.icon_group}>
@@ -172,29 +220,30 @@ export const Bonusbethistorybox = (props) =>{
              <View style={styles.betdetails}>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Odds</Text>
-                <Text style={styles.details_item}>{props.totalOdds}</Text>
+                <Text style={styles.details_item}>{isDecimal(odds) ? odds.toFixed(2) : odds}</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Stake</Text>
-                <Text style={styles.details_item}>{props.stake} ₣</Text>
+                <Text style={styles.details_item}>{isDecimal(stakeAmount) ? stakeAmount.toFixed(2) : stakeAmount} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Potential winnings</Text>
-                <Text style={styles.details_item}>{props.potential_wininings} ₣</Text>
+                <Text style={styles.details_item}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Status</Text>
-                <Text style={styles.details_item}>Accepted</Text>
+                <Text style={styles.statusValue}>Accepted</Text>
                </View>
              </View>
              </View>
              <View>
               
              </View>
+           </Pressable>
         </>
     )
 }
-export const Bethistoryitems = () => {
+export const Bethistoryitems = (props) => {
   const styles = {
     marginBox:{
       width:"100%",
@@ -208,17 +257,19 @@ export const Bethistoryitems = () => {
       color:"steelblue"
   },
   itemLableTwo:{
-      fontWeight:"bold",
+      fontWeight:"900",
       color:colors.text_color,
-      fontSize:sizes.size_16,
+      fontSize:sizes.size_15,
   },
   itemLableOne:{
-     fontSize:sizes.size_16,
-     fontWeight:"700" 
+     fontSize:sizes.size_15,
+     fontWeight:"900",
+    color:colors.text_color
   },
   logo:{
-      width:"75%",
-      height:"75%"
+      width:"70%",
+      height:"70%",
+      objectFit:"contain"
   },
   lableLarge:{
       fontSize:25,
@@ -228,13 +279,13 @@ export const Bethistoryitems = () => {
   htname:{
       marginEnd:sizes.size_10,
       fontSize:sizes.size_13,
-      fontWeight:"600",
+      fontWeight:"700",
       color:colors.text_color
   },
   awteamname:{
       marginStart:sizes.size_10,
       fontSize:sizes.size_13,
-      fontWeight:"600",
+      fontWeight:"700",
       color:colors.text_color
   },
   scoreBox:{
@@ -299,10 +350,10 @@ export const Bethistoryitems = () => {
         <View style={styles.itemBox}>
                      <View style={styles.justifyBetween}>
                      <View style={styles.TeamBox}>
-                        <Text style={styles.htname}>Team Name</Text>
+                        <Text style={styles.htname}>{props.htname}</Text>
                         <View style={styles.circleOne}>
                             <View style={styles.circleTwo}>
-                            <Image style={styles.logo} source={require('../assets/Logos/man_city.png')}></Image>
+                            <Image style={styles.logo} source={props.htlogo}></Image>
                             </View>
                         </View>
                      </View>
@@ -312,16 +363,16 @@ export const Bethistoryitems = () => {
                      <View style={styles.TeamBox}>
                          <View style={styles.circleOne}>
                             <View style={styles.circleTwo}>
-                            <Image style={styles.logo} source={require('../assets/Logos/chelsea.png')}></Image>
+                            <Image style={styles.logo} source={props.atlogo}></Image>
                             </View>
                         </View>
-                         <Text style={styles.awteamname}>Team Name</Text>
+                         <Text style={styles.awteamname}>{props.awname}</Text>
                      </View>
                      </View>
                      <View style={styles.itemChildone}>
                          <View style={styles.justifySpace}>
-                            <Text style={styles.itemLableOne}>1X2: W1</Text>
-                            <Text style={styles.itemLableTwo}>2.00</Text>
+                            <Text style={styles.itemLableOne}>Bet: {props.market_lable}</Text>
+                            <Text style={styles.itemLableTwo}>{props.odd}</Text>
                          </View>
                          <View style={styles.justifySpace}>
                             <Text style={styles.itemLableOne}>Status</Text>

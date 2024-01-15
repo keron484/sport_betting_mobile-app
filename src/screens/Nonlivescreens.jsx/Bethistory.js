@@ -15,6 +15,11 @@ function Bethistory()
  const account_balance = useSelector(user_balance);
  const betItems = useSelector(slipitems);
  const bonus_data = useSelector(bonus_bet_list);
+ function hasDecimalPoint (number) {
+     const numberString = number.toString();
+     return numberString.includes(".");
+ }
+ hasDecimalPoint(account_balance);
  const placedBetitems = betItems.map((items) => {
       return(
         <Bethistorybox 
@@ -52,7 +57,7 @@ function Bethistory()
                
                  <View>
                    <Text style={styles.lable}>Current Account</Text>
-                   <Text style={styles.acc_balnce}>{account_balance} ₣</Text>
+                   <Text style={styles.acc_balnce}>{hasDecimalPoint(account_balance) ? account_balance.toFixed(2) : account_balance} ₣</Text>
                  </View>
                <View style={styles.box}>
                <View style={styles.icon_box}>

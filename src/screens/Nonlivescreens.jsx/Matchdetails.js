@@ -6,7 +6,15 @@ import { ScrollView, Image, Pressable } from 'react-native';
 import { colors, sizes } from '../../components/Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
-function Matchdetails() {
+import { PreMatchFixtures } from '../../Data/Fixtures';
+function Matchdetails({route}) {
+  const {id, league_name, league_title} = route.params
+  const findArrayByName = (PreMatchFixtures, arrayName) => {
+    const matchingArray = PreMatchFixtures[arrayName];
+    return matchingArray;
+  }
+  const selectedArray = findArrayByName(PreMatchFixtures, league_name);
+  const item = selectedArray.find((items) => items.id === id)
   const data = [
     {
       id:1,
@@ -37,17 +45,15 @@ function Matchdetails() {
          <View style={styles.childone}>
            <View style={styles.title_box}>
                 <Pressable onPress={() => {navigation.goBack()}}>
-                <View style={styles.badge_md}>
                 <Icon name='chevron-back-outline' size={25}></Icon>
-               </View>
                 </Pressable>
-              <Text style={styles.textWhite}>England Premier League</Text>
+              <Text style={styles.textNormal}>{league_title}</Text>
               <Text></Text>
            </View>
            <View style={styles.desc_box}>
               <View style={styles.home_box}>
-                <Image source={require('../../assets/Logos/chelsea.png')} style={styles.logo}></Image>
-                  <Text style={styles.teamName}>Chelsea</Text>
+                <Image source={item.htlogo} style={styles.logo}></Image>
+                  <Text style={styles.teamName}>{item.htname}</Text>
               </View>
               <View style={styles.match_info}>
               <Text style={styles.textLarge}>VS</Text>
@@ -55,8 +61,8 @@ function Matchdetails() {
               <Text style={styles.textNormal}>12:21:06</Text>
               </View>
               <View style={styles.away_box}>
-                <Image source={require('../../assets/Logos/man_city.png')} style={styles.logo}></Image>
-                <Text style={styles.teamName}>Man city</Text>
+                <Image source={item.atlogo} style={styles.logo}></Image>
+                <Text style={styles.teamName}>{item.awname}</Text>
               </View>
            </View>
          </View>
@@ -287,7 +293,7 @@ const styles = StyleSheet.create({
      alignItems:"center"
   },
   teamName:{
-     fontSize:18,
+     fontSize:14,
      fontWeight:"600",
      color:colors.text_color,
      marginTop:2
@@ -315,8 +321,9 @@ const styles = StyleSheet.create({
      borderRadius:10
   },
   logo:{
-     width:50,
-     height:50
+     width:45,
+     height:45,
+     objectFit:"contain"
   },
   badge_md:{
      width:35,

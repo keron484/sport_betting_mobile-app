@@ -1,84 +1,33 @@
 import React from 'react';
-import { Image, View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import Navtop from '../../components/Navtop';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors, sizes } from '../../components/Utils/colors';
 import { useNavigation } from '@react-navigation/native';
-function Livematches(){
+import LivematchBox from './Matchbox';
+import { LivematchesFixtures } from '../../Data/Fixtures';
+function Livematches({route}){
  const navigation = useNavigation();
+ const {league_name, league_title} = route.params;
+ const findArrayByName = (LivematchesFixtures, arrayName) => {
+  const matchingArray = LivematchesFixtures[arrayName];
+  return matchingArray;
+}
+const selectedArray = findArrayByName(LivematchesFixtures, league_name);
+
     return(
         <>
                   <Navtop></Navtop>
           <View style={styles.navTwo}>
                <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
-                 <Text>
                     <Icon name='chevron-back' size={25}></Icon>
-                 </Text>
-               </View>
                </Pressable>
-              <Text style={styles.title}>England Premier League</Text>
+              <Text style={styles.title}>{league_title}</Text>
              <Text></Text>
           </View>
       <ScrollView >
            <View style={styles.container}>
-           <Pressable  onPress={() => {navigation.navigate('matchdetailslive')}}>
-           <View style={styles.matchbox}>
-          <View style={styles.match_lable}>
-            <View style={styles.lable_two}>
-              <View style={styles.bagde_sm}>
-                <Icon name='football' size={25} style={styles.icon_color}></Icon>
-              </View>
-              <Text style={styles.text_lable}>Premier League, Round 10</Text>
-            </View>
-            <View style={styles.bagde_list}>
-              <View style={styles.bagde_sm}>
-              <Icon name='pulse' size={18}  style={styles.icon_color}></Icon>
-              </View>
-            </View>
-          </View>
-          <View style={styles.teams_logo_area}>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-                <Image source={require('../../assets/Logos/man_utd.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-            <Text style={styles.team_name}>Man City</Text>
-            </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
-              <Text style={styles.scores}> 2:1 </Text>
-              <Text style={styles.lable}>1-Half, 43:53</Text>
-              <Text style={styles.lable}>+5 Minutes</Text>
-            </View>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-              <Image source={require('../../assets/Logos/man_city.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-             <View>
-             <Text style={styles.team_name}>Man Utd</Text>
-             </View>
-            </View>
-          </View>
-           <View style={styles.btn_box}>
-               <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W1</Text>
-                    <Text style={styles.odds}>2.00</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>X</Text>
-                    <Text style={styles.odds}>5.40</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W2</Text>
-                    <Text style={styles.odds}>1.98</Text>
-                  </View>
-           </View>
-        </View>
-           </Pressable>
-
+             <LivematchBox selectedArray={selectedArray} league_name={league_name} league_title={league_title}/>
            </View>
            <View style={styles.marginBox}>
 
@@ -238,7 +187,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingVertical:sizes.size_10,
+    paddingVertical:sizes.size_15,
     backgroundColor:colors.color_white,
     width:"100%",
     paddingHorizontal:sizes.size_10

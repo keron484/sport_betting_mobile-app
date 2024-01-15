@@ -3,7 +3,7 @@ import { Text, TextInput, View, ScrollView, StyleSheet, TouchableOpacity, Pressa
 import Navtop from "../../components/Navtop";
 import { user_balance, placebetActions } from "../../Redux/Slices/Betslice";
 import { useSelector } from "react-redux"
-import { selectedList, progress_bonus, slipActions  } from "../../Redux/Slices/BetSlipslice";
+import { selectedList, progress_bonus, slipActions } from "../../Redux/Slices/BetSlipslice";
 import Slipitems from "./slipItems";
 import { useState } from 'react';
 import { colors, sizes } from "../../components/Utils/colors";
@@ -19,11 +19,15 @@ function Betslip(){
         setIshowing(prevalue => !prevalue);
     }
     const [stake, setStake] = useState("");
-    const account_balance = useSelector(user_balance);
     const selected_events = useSelector(selectedList);
+    const account_balance = useSelector(user_balance);
     const linkState = useSelector(slides);
-    const num_events = selected_events.length
-    const bonus = useSelector(progress_bonus)
+    const num_events = selected_events.length;
+    const bonus = useSelector(progress_bonus);
+    const isDecimal = (number) => {
+        const numberString = number.toString();
+        return numberString.includes(".");
+    }
     let totalOdds = 1;
     selected_events.forEach(element => {
         totalOdds *= element.odd
@@ -290,7 +294,7 @@ function Betslip(){
             borderTopLeftRadius:50,
             borderBottomLeftRadius:50,
             backgroundColor:"#5cb85c",
-            width:"25%",
+            width:`${bonus}%`,
             flexDirection:'row',
             alignItems:"center",
             justifyContent:"center"
@@ -309,7 +313,7 @@ function Betslip(){
             fontSize:15
         },
         icon:{
-            color:colors.secondary_color
+            color:colors.secondary_color,
         },
         dash:{
             width:"15%",
@@ -321,6 +325,15 @@ function Betslip(){
         text_center:{
             textAlign:"center",
             alignItems:"center"
+        },
+        boxTwodec:{
+            flexDirection:"row",
+            justifyContent:"space-between",
+            alignItems:"center"
+        },
+        textNormal:{
+           fontSize:sizes.size_14,
+           fontWeight:"800"
         }
     })
     const navigation = useNavigation();
@@ -357,10 +370,14 @@ function Betslip(){
                            <View>
                            <View style={styles.box_two_dex}>
                                <Text style={styles.text_normal}>Events</Text>
-                               <Text style={styles.text_normal}>
+                                <View style={styles.boxTwodec}>
+                                <Text style={styles.textNormal}>
                                 {selected_events.length}
+                                </Text>
+                                <Text>
                                 <Icon name="layers" size={20} style={styles.icon}></Icon>
                                 </Text>
+                                </View>
                            </View>
                            <View style={styles.box_two_dex}>
                                <Text style={styles.text_normal}>Odds</Text>
@@ -386,11 +403,11 @@ function Betslip(){
                             </Pressable>
                        </View>
                
-                       <Text style={styles.balance}>{account_balance} ₣</Text>
+                       <Text style={styles.balance}>{isDecimal(account_balance) ? account_balance.toFixed(2) : account_balance} ₣</Text>
                         <View style={styles.input_area}>
                         <TextInput 
                        style={styles.input_box} 
-                       placeholder="Entert the Amount"
+                       placeholder="Enter the Amount"
                         keyboardType="numeric"
                         onChangeText={(newvalue) => setStake(newvalue)}
                         value={stake}
@@ -412,12 +429,12 @@ function Betslip(){
                        </View>
                        <View style={styles.pot_winings}>
                        <Text style={styles.text_white}>Bonus Percentage</Text>
-                       <Text style={styles.text_white}>25 %</Text>
+                       <Text style={styles.text_white}>{`${bonus}%`}</Text>
                        </View>
                        <View style={styles.progress_box}>
                            <View style={styles.progress}>
                                <Text style={styles.progress_lable}>
-                                   25%
+                               {`${bonus}%`}
                                </Text>
                            </View>
                        </View>

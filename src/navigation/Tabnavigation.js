@@ -24,9 +24,13 @@ import MatchdetailsLive from '../screens/Livescreens/Matchdetailslive';
 import Defaultbetslip from '../screens/Nonlivescreens.jsx/Defaultbetslip';
 import { count } from '../Redux/Slices/BetSlipslice';
 import { useSelector } from 'react-redux';
-import Betdetails from '../screens/Nonlivescreens.jsx/Betdetails'
+import MatchdetailsTwo from '../screens/Livescreens/Matchdetailstwo'
+import Betdetails from '../screens/Nonlivescreens.jsx/Betdetails';
+import { loggedin } from '../Redux/Slices/Authslice';
+import BonusbetHistoryDetails from '../screens/Nonlivescreens.jsx/BonusbetHisDetails'
 const Stack = createNativeStackNavigator();
 const MatchStack = () => {
+  
   return(
      <Stack.Navigator>
        <Stack.Screen name='Tournaments' component={Tournaments}
@@ -49,10 +53,15 @@ const MatchStack = () => {
         options={{headerShown: false}}
        >
        </Stack.Screen>
+       <Stack.Screen name='Livematchdetails' component={MatchdetailsTwo}
+        options={{headerShown: false}}
+       >
+       </Stack.Screen>
      </Stack.Navigator>
   )
 }
 const Menustack = () =>{
+  const logginStatus = useSelector(loggedin);
    return(
        <Stack.Navigator>
           <Stack.Screen name='menu' component={Menu}
@@ -96,10 +105,15 @@ const BethistoryStack = () => {
           options={{headerShown: false}}
          >
         </Stack.Screen>
+        <Stack.Screen name='betdetailsbonus' component={BonusbetHistoryDetails}
+          options={{headerShown: false}}
+         >
+        </Stack.Screen>
      </Stack.Navigator>
   )
 }
 const Popularstack = () =>{
+  const logginStatus = useSelector(loggedin);
     return(
       
         <Stack.Navigator>
@@ -137,7 +151,7 @@ const Tabnavigation = () => {
         options={{
           tabBarIcon:({focused,color,size}) => (
            
-            <Icon name="flame" size={28} style={focused ? styles.selected : null}></Icon>
+            <Icon name="flame" size={23} style={focused ? styles.selected : null}></Icon>
           )
         }
       }

@@ -7,11 +7,14 @@ import { sizes, colors } from './Utils/colors';
 import { useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { authactions } from '../Redux/Slices/Authslice';
+import { useNavigation } from '@react-navigation/native';
 function DepositComponent(){
+    const navigation = useNavigation();
     const [deposite_amount, setStDeposite_amount] = useState("");
     const dispatch = useDispatch();
     const AccountDeposite = () => {
         dispatch(placebetActions.accountdeposite(Number(deposite_amount)))
+         navigation.navigate("Popular")
       }
     const Back = () => {
         dispatch(authactions.Deposit());

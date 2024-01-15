@@ -10,6 +10,10 @@ import { useNavigation } from '@react-navigation/native';
 import { loggedin } from '../../Redux/Slices/Authslice';
 function Popular(props){
   const account_balance = useSelector(user_balance);
+  const  ishavingDecimal = (number) => {
+     const numberString = number.toString();
+     return numberString.includes(".");    
+  }
   const isloggedin = useSelector(loggedin)
    let {navigate} = props.navigation;
    const haddlepress = () => navigate('Login')
@@ -21,7 +25,7 @@ function Popular(props){
       </View>
       <View>
        <View style={styles.nav_container}>
-       <ScrollView horizontal={true}>
+       <ScrollView horizontal={true} >
        <View style={styles.nav_list}>
              <View style={styles.btn_active}>
                 <Text style={styles.active_lable}>Live</Text>
@@ -46,7 +50,7 @@ function Popular(props){
               Account balance
             </Text>
             <Text style={styles.textlarge}>
-                {account_balance} ₣
+                {ishavingDecimal(account_balance) ? account_balance.toFixed(2) : account_balance} ₣
             </Text>
            </View>
             <View>
@@ -65,13 +69,13 @@ function Popular(props){
            </Pressable>
            <Pressable style={styles.btnLoggin} onPress={haddlepress}>
               <View>
-                <Text style={styles.signName}>Login in</Text>
+                <Text style={styles.signName}>Login</Text>
               </View>
            </Pressable>
            </>}
         </View>
        </View>
-        <ScrollView>
+        <ScrollView alwaysBounceVertical={true}>
         <View style={styles.container}>
            <Livematchbox></Livematchbox>
            <View style={styles.marginBox}>
@@ -147,18 +151,20 @@ const styles = StyleSheet.create({
      flexDirection:"row",
      alignItems:"center",
      justifyContent:"center",
-     paddingVertical:5
+     paddingVertical:5,
+     
   },
   btn_inactive:{
     width:140,
     borderRadius:20,
     backgroundColor:"#fff",
     marginHorizontal:5,
-    paddingVertical:10,
+    paddingVertical:8,
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"center",
-    elevation:5
+    borderWidth:sizes.size_2,
+     borderColor:colors.secondary_color
   },
   container:{
     backgroundColor:"#f9f9f9",

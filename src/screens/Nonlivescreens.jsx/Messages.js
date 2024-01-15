@@ -44,11 +44,11 @@ function Messages(){
         <Navtop></Navtop>
         <View style={styles.navTwo}>
                <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
+               
                  <Text>
                     <Icon name='chevron-back' size={25}></Icon>
                  </Text>
-               </View>
+             
                </Pressable>
               <Text style={styles.title}>Messages</Text>
              <Text></Text>
@@ -101,9 +101,10 @@ const styles = StyleSheet.create({
       borderRadius:10,
       backgroundColor:colors.color_white,
       paddingHorizontal:10,
-      paddingVertical:5,
+      paddingVertical:10,
       borderStartWidth:sizes.size_5,
-      borderColor:colors.color_green
+      borderColor:colors.color_green,
+      marginVertical:sizes.size_5
     },
     msgBoxheader:{
       flexDirection:"row",
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
-        paddingVertical:sizes.size_10,
+        paddingVertical:sizes.size_15,
         backgroundColor:colors.color_white,
         width:"100%",
         paddingHorizontal:sizes.size_10

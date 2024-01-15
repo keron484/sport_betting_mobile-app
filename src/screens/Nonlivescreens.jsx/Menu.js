@@ -14,7 +14,7 @@ function Menu()
        <View style={styles.navTwo}>
           <Text style={styles.title}>Menu</Text>
        </View>
-       <ScrollView>
+       <ScrollView alwaysBounceVertical={true}>
        <Pressable style={styles.box} 
             onPress={() => navigation.navigate("deposit")}
        >
@@ -215,22 +215,21 @@ const styles  = StyleSheet.create({
      justifyContent:"center"
   },
   container:{
-   paddingHorizontal:4,
+   paddingHorizontal:10,
    backgroundColor:"#fafafb",
    flex:1
   },
   box:{
    width:"100%",
    paddingVertical:12,
-   borderRadius:10,
+   borderRadius:5,
    flexDirection:"row",
    justifyContent:"space-between",
    alignItems:"center",
    backgroundColor:"#fff",
    paddingHorizontal:10,
-   borderStartWidth:5,
-   borderColor:colors.secondary_color,
-   marginBottom:sizes.size_8
+   marginBottom:sizes.size_5,
+   elevation:sizes.size_2
   }
 })
 export default Menu;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TextInput, View, ScrollView, StyleSheet, TouchableOpacity, Pressable, Alert } from "react-native";
 import Navtop from "../../components/Navtop";
-import {  placebetActions } from "../../Redux/Slices/Betslice";
+import {  placebetActions, b_account } from "../../Redux/Slices/Betslice";
 import { useSelector } from "react-redux"
 import { selectedList, slipActions  } from "../../Redux/Slices/BetSlipslice";
 import Slipitems from "./slipItems";
@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { colors, sizes } from "../../components/Utils/colors";
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useDispatch } from "react-redux";
-import { b_account } from "../../Redux/Slices/Betslice";
 function BonusBetslip(){
     const [isshowing, setIshowing] = useState(false);
     function toggle() {
@@ -18,7 +17,11 @@ function BonusBetslip(){
     const [stake, setStake] = useState("");
     const account_balance = useSelector(b_account);
     const selected_events = useSelector(selectedList);
-    const num_events = selected_events.length
+    const num_events = selected_events.length;
+    const isDecimal = (number) => {
+        const numberString = number.toString();
+        return numberString.includes(".");
+    }
     let totalOdds = 1;
     selected_events.forEach(element => {
         totalOdds *= element.odd
@@ -45,7 +48,7 @@ function BonusBetslip(){
             potential_wininings,
             totalOdds,
             date:"12-29-2023",
-            bettype: num_events <= 1 ? "Single" : "Accumulator",
+            bettype: "Bonus",
             selected_events
           }))
       }
@@ -376,7 +379,7 @@ function BonusBetslip(){
                            </Pressable>
                        </View>
                
-                       <Text style={styles.balance}>{account_balance} ₣</Text>
+                       <Text style={styles.balance}>{isDecimal(account_balance) ? account_balance.toFixed(2) : account_balance} ₣</Text>
                         <View style={styles.input_area}>
                         <TextInput 
                          style={styles.input_box} 

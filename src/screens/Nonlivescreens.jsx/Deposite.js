@@ -3,7 +3,6 @@ import Navtop from '../../components/Navtop';
 import { ScrollView, Image, Pressable, View, Text, StyleSheet  } from 'react-native';
 import { colors, sizes } from '../../components/Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useState} from "react"
 import { useNavigation } from '@react-navigation/native';
 import DepositComponent from '../../components/DepositCom';
 import { toggleState } from '../../Redux/Slices/Authslice';
@@ -24,11 +23,9 @@ function Deposite()
             <Navtop></Navtop>
            <View style={styles.navTwo}>
                <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
                  <Text>
                     <Icon name='chevron-back' size={25}></Icon>
                  </Text>
-               </View>
                </Pressable>
               <Text style={styles.title}>Account Deposit</Text>
              <Text></Text>

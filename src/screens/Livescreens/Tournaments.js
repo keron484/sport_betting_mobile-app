@@ -38,6 +38,8 @@ function TournamentsLive(){
                      title={items.title}
                      leagues={items.leagues}
                      link={items.link}
+                     league_title={items.league_title}
+                     league_name={items.league_name}
                    /> 
                   </>
                )

@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
         alignItems:"center",    
         backgroundColor:colors.color_white,
         paddingVertical:15,
-        marginBottom:1,
-        elevation:5
+        elevation:5,
+        marginBottom:1
       },
       logo:{
         fontSize:18,
         fontWeight:"bold",
-        color:"#095256"
+        color:colors.text_color
       },
 })
 export default Navtop

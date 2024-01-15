@@ -1,18 +1,40 @@
 import React, { Pressable } from "react-native";
 import {View, Text, StyleSheet, Image} from "react-native"
 import { Livedata } from "../Data/Livedata";
-import { colors} from "./Utils/colors";
+import { colors, sizes} from "./Utils/colors";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Market_btn } from "./buttons/buttons";
 import { useNavigation } from "@react-navigation/native";
+import { useState, useEffect } from "react";
 function Livematchbox() {
   const navigation = useNavigation();
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (time < 90 * 60) {
+        setTime(time + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [time]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
     return(
         <>
         {Livedata.map((items) => {
             return(
                 <>
-                   <Pressable onPress={() => {navigation.navigate('matchdetailslive')}}>
+                   <Pressable onPress={() => {navigation.navigate('matchdetailslive', {id:items.id})}}>
                    <View style={styles.matchbox}>
           <View style={styles.match_lable}>
             <View style={styles.lable_two}>
@@ -29,25 +51,27 @@ function Livematchbox() {
           </View>
           <View style={styles.teams_logo_area}>
             <View style={styles.team_box}>
+            <View style={styles.textLenght}>
+            <Text style={styles.team_name} numberOfLines={1}>{items.htname}</Text>
+            </View>
             <View style={styles.teamcircleone}>
               <View style={styles.teamcircletwo}>
-                <Image source={require('../assets/Logos/man_utd.png')} style={styles.team_logo}></Image>
+                <Image source={items.htlogo} style={styles.team_logo}></Image>
               </View>
             </View>
-            <Text style={styles.team_name}>{items.htname}</Text>
             </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
+            <View style={{alignItems:"center", marginHorizontal:5, marginTop:10}}>
               <Text style={styles.scores}>{items.htscore}:{items.atscore}</Text>
-              <Text style={styles.lable}>{items.timelable},  {items.matchtime} </Text>
+              <Text style={styles.lable}>{items.timelable},  {formatTime(time)} </Text>
             </View>
             <View style={styles.team_box}>
             <View style={styles.teamcircleone}>
               <View style={styles.teamcircletwo}>
-              <Image source={require('../assets/Logos/man_city.png')} style={styles.team_logo}></Image>
+              <Image source={items.atlogo} style={styles.team_logo}></Image>
               </View>
             </View>
-             <View>
-             <Text style={styles.team_name}>{items.awname}</Text>
+             <View style={styles.textLenght}>
+             <Text style={styles.team_name} numberOfLines={1}>{items.awname}</Text>
              </View>
             </View>
           </View>
@@ -100,6 +124,9 @@ function Livematchbox() {
     )
 }
 const styles = StyleSheet.create({
+  textLenght:{
+    width:65
+  },
   market_name:{
     marginStart:10,
     fontSize:16,
@@ -142,7 +169,8 @@ const styles = StyleSheet.create({
         letterSpacing:2
       },
       team_box:{
-        alignItems:"center"
+        alignItems:"center",
+        flexDirection:"row"
       },
       bagde_sm:{
         width:35,
@@ -180,7 +208,8 @@ const styles = StyleSheet.create({
       },
       team_logo:{
           width:"70%",
-          height:"70%"
+          height:"70%",
+          objectFit:"contain"
       },
       teamcircleone:{
         width: 70,

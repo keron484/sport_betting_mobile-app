@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { tournament } from '../../Data/tournaments'
 import Tournamentitem from '../../components/Tournamentitem';
 import { useNavigation } from '@react-navigation/native';
-import { colors, sizes } from '../../components/Utils/colors'
+import { colors, sizes } from '../../components/Utils/colors';
 const Tournaments = () => {
    const navigation = useNavigation(); 
   return (

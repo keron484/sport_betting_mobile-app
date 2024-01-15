@@ -6,8 +6,11 @@ import { colors, sizes } from '../../components/Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 import Navtop from '../../components/Navtop';
-function MatchdetailsLive()
+import { Livedata } from '../../Data/Livedata';
+import { useState, useEffect } from 'react';
+function MatchdetailsLive({route})
 {
+
   const data = [
     {
       id:1,
@@ -28,9 +31,34 @@ function MatchdetailsLive()
     {
       id:5,
       lable:"Player stats"
-    }
+    },
+    
   ]
+  const { id } = route.params
   const navigation = useNavigation();
+
+  const item = Livedata.find((item) => item.id === id);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (time < 90 * 60) {
+        setTime(time + 1);
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [time]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
     return(
         <>
         <Navtop></Navtop>
@@ -48,18 +76,24 @@ function MatchdetailsLive()
            <View style={styles.desBoxtwo}>
            <View style={styles.desc_box}>
               <View style={styles.home_box}>
-                  <Text style={styles.homeName}>Chelsea</Text>
-                <Image source={require('../../assets/Logos/chelsea.png')} style={styles.logo}></Image>
+                  <View style={styles.textLength}>
+                   <Text style={styles.homeName}>{item.htname}</Text>
+                  </View>
+                <Image source={item.htlogo} style={styles.logo}></Image>
               </View>
               <View style={styles.match_info}>
-              <Text style={styles.textLarge}>2:1</Text>
-              <Text style={styles.lableTwo}>1-half (2-1) </Text>
-              <Text style={styles.lableTwo}>45:00 +5 Min</Text>
+              <Text style={styles.textLarge}>{item.htscore}:{item.atscore}</Text>
+              
               </View>
               <View style={styles.away_box}>
-                <Image source={require('../../assets/Logos/man_city.png')} style={styles.logo}></Image>
-                <Text style={styles.teamName}>Man city</Text>
+                <Image source={item.atlogo} style={styles.logo}></Image>
+                <View style={styles.textLength}>
+                 <Text style={styles.teamName}>{item.awname}</Text>
+                </View>
               </View>
+           </View>
+           <View style={styles.infoBox}>
+           <Text style={styles.lableTwo}>1-half (2-1), {formatTime(time)} </Text>
            </View>
               <View>
                 <View style={styles.winPob}>
@@ -295,6 +329,13 @@ function MatchdetailsLive()
     )
 }
 const styles = StyleSheet.create({
+  textLength:{
+    width:90
+  },
+    infoBox:{
+        alignItems:"center",
+        marginVertical:sizes.size_5
+    },
     probBoxThree:{
       width:"55%",
       paddingVertical:sizes.size_4,
@@ -337,7 +378,8 @@ const styles = StyleSheet.create({
     },
     homeName:{
       marginEnd:sizes.size_10,
-      fontWeight:"500"
+      fontWeight:"800",
+      marginStart:sizes.size_10
     },
     marginBox:{
         width:"100%",
@@ -356,9 +398,8 @@ const styles = StyleSheet.create({
       },
       teamName:{
          fontSize:13,
-         fontWeight:"600",
+         fontWeight:"800",
          color:colors.text_color,
-         marginTop:2,
          marginStart:sizes.size_10
       },
       textNormal:{
@@ -367,17 +408,18 @@ const styles = StyleSheet.create({
       },
       textLarge:{
         fontSize:30,
-        fontWeight:"900"
+        fontWeight:"900",
+        letterSpacing:5
       },
       match_info:{
          marginHorizontal:sizes.size_10,
          alignItems:"center",
-         marginTop:sizes.size_20
       },
       desc_box:{
          flexDirection:"row",
          justifyContent:"center",
          alignItems:"center",
+         marginTop:sizes.size_30
       },
       desBoxtwo:{
         backgroundColor:"rgba(0, 0, 0, 0.2)",
@@ -388,7 +430,8 @@ const styles = StyleSheet.create({
       },
       logo:{
          width:40,
-         height:40
+         height:40,
+         objectFit:"contain"
       },
       badge_md:{
          width:35,

@@ -6,242 +6,32 @@ import { ScrollView, Pressable, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { sizes, colors } from '../../components/Utils/colors';
-function Matches() {
+import { PreMatchFixtures } from '../../Data/Fixtures';
+import Prematchitem from '../../components/Prematchitem';
+function Matches({route}) {
+
+  const {league_name, league_title} = route.params;
+  const findArrayByName = (PreMatchFixtures, arrayName) => {
+    const matchingArray = PreMatchFixtures[arrayName];
+    return matchingArray;
+  }
+  const selectedArray = findArrayByName(PreMatchFixtures, league_name);
   const navigation = useNavigation();
   return(
     <>
           <Navtop></Navtop>
           <View style={styles.navTwo}>
                <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
                  <Text>
                     <Icon name='chevron-back' size={25}></Icon>
                  </Text>
-               </View>
                </Pressable>
-              <Text style={styles.title}>England Premier League</Text>
+              <Text style={styles.title}>{league_title}</Text>
              <Text></Text>
           </View>
       <ScrollView >
            <View style={styles.container}>
-           <Pressable  onPress={() => {navigation.navigate('matchdetails')}}>
-           <View style={styles.matchbox}>
-          <View style={styles.match_lable}>
-            <View style={styles.lable_two}>
-              <View style={styles.bagde_sm}>
-                <Icon name='football' size={25} style={styles.icon_color}></Icon>
-              </View>
-              <Text style={styles.text_lable}>Premier League, Round 10</Text>
-            </View>
-            <View style={styles.bagde_list}>
-              <View style={styles.bagde_sm}>
-              <Icon name='star-outline' size={18}  style={styles.icon_color}></Icon>
-              </View>
-            </View>
-          </View>
-          <View style={styles.teams_logo_area}>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-                <Image source={require('../../assets/Logos/man_utd.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-            <Text style={styles.team_name}>Man City</Text>
-            </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
-              <Text style={styles.scores}>VS</Text>
-              <Text style={styles.lable}>Starts In</Text>
-              <Text style={styles.lable}>1:00:45</Text>
-            </View>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-              <Image source={require('../../assets/Logos/man_city.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-             <View>
-             <Text style={styles.team_name}>Man Utd</Text>
-             </View>
-            </View>
-          </View>
-           <View style={styles.btn_box}>
-               <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W1</Text>
-                    <Text style={styles.odds}>2.00</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>X</Text>
-                    <Text style={styles.odds}>5.40</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W2</Text>
-                    <Text style={styles.odds}>1.98</Text>
-                  </View>
-           </View>
-        </View>
-           </Pressable>
-        <View style={styles.matchbox}>
-          <View style={styles.match_lable}>
-            <View style={styles.lable_two}>
-              <View style={styles.bagde_sm}>
-                <Icon name='football' size={25} style={styles.icon_color}></Icon>
-              </View>
-              <Text style={styles.text_lable}>Premier League, Round 10</Text>
-            </View>
-            <View style={styles.bagde_list}>
-              <View style={styles.bagde_sm}>
-              <Icon name='star-outline' size={18}  style={styles.icon_color}></Icon>
-              </View>
-            </View>
-          </View>
-          <View style={styles.teams_logo_area}>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-                <Image source={require('../../assets/Logos/newcastle.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-            <Text style={styles.team_name}>Man City</Text>
-            </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
-              <Text style={styles.scores}>VS</Text>
-              <Text style={styles.lable}>Starts In</Text>
-              <Text style={styles.lable}>1:00:45</Text>
-            </View>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-              <Image source={require('../../assets/Logos/chelsea.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-             <View>
-             <Text style={styles.team_name}>Man Utd</Text>
-             </View>
-            </View>
-          </View>
-           <View style={styles.btn_box}>
-               <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W1</Text>
-                    <Text style={styles.odds}>2.00</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>X</Text>
-                    <Text style={styles.odds}>5.40</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W2</Text>
-                    <Text style={styles.odds}>1.98</Text>
-                  </View>
-           </View>
-        </View>
-            <View style={styles.matchbox}>
-          <View style={styles.match_lable}>
-            <View style={styles.lable_two}>
-              <View style={styles.bagde_sm}>
-                <Icon name='football' size={25} style={styles.icon_color}></Icon>
-              </View>
-              <Text style={styles.text_lable}>Premier League, Round 10</Text>
-            </View>
-            <View style={styles.bagde_list}>
-              <View style={styles.bagde_sm}>
-              <Icon name='star-outline' size={18}  style={styles.icon_color}></Icon>
-              </View>
-            </View>
-          </View>
-          <View style={styles.teams_logo_area}>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-                <Image source={require('../../assets/Logos/brentford.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-            <Text style={styles.team_name}>Man City</Text>
-            </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
-              <Text style={styles.scores}>VS</Text>
-              <Text style={styles.lable}>Starts In</Text>
-              <Text style={styles.lable}>1:00:45</Text>
-            </View>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-              <Image source={require('../../assets/Logos/brighton.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-             <View>
-             <Text style={styles.team_name}>Man Utd</Text>
-             </View>
-            </View>
-          </View>
-           <View style={styles.btn_box}>
-               <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W1</Text>
-                    <Text style={styles.odds}>2.00</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>X</Text>
-                    <Text style={styles.odds}>5.40</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W2</Text>
-                    <Text style={styles.odds}>1.98</Text>
-                  </View>
-           </View>
-        </View>
-        <View style={styles.matchbox}>
-          <View style={styles.match_lable}>
-            <View style={styles.lable_two}>
-              <View style={styles.bagde_sm}>
-                <Icon name='football' size={25} style={styles.icon_color}></Icon>
-              </View>
-              <Text style={styles.text_lable}>Premier League, Round 10</Text>
-            </View>
-            <View style={styles.bagde_list}>
-              <View style={styles.bagde_sm}>
-              <Icon name='star-outline' size={18}  style={styles.icon_color}></Icon>
-              </View>
-            </View>
-          </View>
-          <View style={styles.teams_logo_area}>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-                <Image source={require('../../assets/Logos/everton.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-            <Text style={styles.team_name}>Man City</Text>
-            </View>
-            <View style={{alignItems:"center", marginHorizontal:20, marginTop:10}}>
-              <Text style={styles.scores}>VS</Text>
-              <Text style={styles.lable}>Starts In</Text>
-              <Text style={styles.lable}>1:00:45</Text>
-            </View>
-            <View style={styles.team_box}>
-            <View style={styles.teamcircleone}>
-              <View style={styles.teamcircletwo}>
-              <Image source={require('../../assets/Logos/wolves.png')} style={styles.team_logo}></Image>
-              </View>
-            </View>
-             <View>
-             <Text style={styles.team_name}>Man Utd</Text>
-             </View>
-            </View>
-          </View>
-           <View style={styles.btn_box}>
-               <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W1</Text>
-                    <Text style={styles.odds}>2.00</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>X</Text>
-                    <Text style={styles.odds}>5.40</Text>
-                  </View>
-                  <View style={styles.betbtn}>
-                    <Text  style={styles.market}>W2</Text>
-                    <Text style={styles.odds}>1.98</Text>
-                  </View>
-           </View>
-        </View>
+                 <Prematchitem selectedArray={selectedArray} league_name={league_name} league_title={league_title}/>   
            </View>
            <View style={styles.marginBox}>
 
@@ -401,7 +191,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingVertical:sizes.size_10,
+    paddingVertical:sizes.size_15,
     backgroundColor:colors.color_white,
     width:"100%",
     paddingHorizontal:sizes.size_10

@@ -18,7 +18,10 @@ function PromoBetslip(){
     const account_balance = useSelector(user_balance);
     const selected_events = useSelector(selectedList);
     const num_events = selected_events.length
-    const bonus = useSelector(progress_bonus)
+    const isDecimal = (number) => {
+        const numberString = number.toString();
+        return numberString.includes(".");
+    }
     let totalOdds = 1;
     selected_events.forEach(element => {
         totalOdds *= element.odd
@@ -378,7 +381,7 @@ function PromoBetslip(){
                            </Pressable>
                        </View>
                
-                       <Text style={styles.balance}>{account_balance} ₣</Text>
+                       <Text style={styles.balance}>{isDecimal(account_balance) ? account_balance.toFixed(2) : account_balance} ₣</Text>
                         <View style={styles.input_area}>
                         <TextInput 
                          style={styles.input_box} 

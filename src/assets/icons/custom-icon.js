@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import { colors, sizes } from "../../components/Utils/colors"
 import { useSelector } from "react-redux"
-import { count } from "../../Redux/Slices/BetSlipslice"
+import { count } from "../../Redux/Slices/BetSlipslice";
 export const Ticketicon = () => {
     const num_events = useSelector(count);
     const styles = StyleSheet.create({
@@ -68,4 +68,30 @@ export const Ticketicon = () => {
         </>
     )
 }
+function BethistoryIcon(){
+    const styles = StyleSheet.create({
+        iconOne:{
+           position:"relative",
+           top:10,
+           right:5,
+           color:"#4785b8"
+        },
+        iconTwo:{
+            position:"relative",
+            backgroundColor:colors.lighter_white,
+            left:2,
+            bottom:9,
+            borderRadius:50,
+            color:"#4785b8"
+        },
+    })
+    return(
+        <>
+         <Icon name='ticket' size={35} style={styles.iconOne}>
+         </Icon>
+         <Icon name='checkmark-circle' size={24} style={styles.iconTwo}></Icon>
+        </>
+    )
+}
+export default BethistoryIcon;
 

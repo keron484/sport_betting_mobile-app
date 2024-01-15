@@ -7,57 +7,92 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { slipitems } from '../../Redux/Slices/Betslice';
 import { Bethistoryitems } from '../../components/Bethistory';
-function Betdetails()
+import BethistoryIcon from '../../assets/icons/custom-icon';
+function Betdetails({route})
 {
+    const { id } = route.params; 
+    const arry_one = useSelector(slipitems);
     // calling the use navigation function;
+    const new_array =  arry_one.filter((items) =>  Number(id) === items.id );
+    const details_list = new_array[0].selected_events;
     const navigation = useNavigation();
     //pulling bet details data from store 
-    const arry_one = useSelector(slipitems);
     // creating a route
     const back = () => {
         navigation.goBack();
     }
+    const betdetailsitems = details_list.map((items) => {
+      return(
+         <>
+          <Bethistoryitems 
+            key={items.id}
+            htname = {items.htname}
+            awname = {items.awname}
+            htlogo = {items.htlogo}
+            atlogo = {items.atlogo}  
+            market_lable = {items.market_lable}
+            odd = {items.odd}
+            match_date = {items.match_date}
+            htscore = {items.htscore}
+            atscore = {items.atscore}
+            timelable = {items.timelable}
+            scoreshalf = {items.scoreshalf}
+          />
+         </>
+      )
+    })
     return(
        <>
                 <Navtop></Navtop>
        <View style={styles.container}>
-        <View style={styles.childOne}>
+        {new_array.map((item) => {
+          const oddsTotal = item.totalOdds;
+          const stakeAmount = item.stake;
+          const potWinings = item.potential_wininings;
+          const bonus = item.bonus_calcu;
+          const isDecimal = (number) => {
+              const numberString = number.toString();
+              return numberString.includes(".");
+          }
+          return(
+            <>
+              <View style={styles.childOne}>
            <View style={styles.boxOne}>
                <View style={styles.titleBox}>
                    <Pressable onPress={back}>
                    <Text>
-                     <Icon name='chevron-back' style={styles.icon} size={20}></Icon>
+                     <Icon name='chevron-back' style={styles.icon} size={28}></Icon>
                    </Text>
                    </Pressable>
-                   <Text style={styles.title}>Bet Details</Text>
+                   <Text style={styles.title}>Bet Details </Text>
                    <Text></Text>
                </View>
                <View style={styles.BoxTwo}>
                  <View style={styles.BadgeSm}>
-                    <Icon name='ticket' size={40} style={styles.icon}></Icon>
+                    <BethistoryIcon />
                  </View>
                  <View>
-                     <Text style={styles.lableone}>ID:ASJKDH32984720893</Text>
-                     <Text style={styles.lableone}>Bet Type: <Text style={styles.pill}>Accumulator</Text></Text>
-                     <Text style={styles.lableone}>Date: <Text>12:00:23</Text> </Text>
+                     <Text style={styles.lableone}>ID: {item.id}STJSDAJDKJIORWE</Text>
+                     <Text style={styles.lableone}>Bet Type: <Text style={styles.pill}>{item.bettype}</Text></Text>
+                     <Text style={styles.lableone}>Date: <Text>{item.date}</Text> </Text>
                  </View>
                </View>
                <View style={styles.desBox}>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Odds</Text>
-                      <Text style={styles.lableend}>38.9</Text>
+                      <Text style={styles.lableend}>{isDecimal(oddsTotal) ? oddsTotal.toFixed(2) : oddsTotal}</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Stake</Text>
-                      <Text style={styles.lableend}>10000  ₣</Text>
+                      <Text style={styles.lableend}>{isDecimal(stakeAmount) ? stakeAmount.toFixed(2) : stakeAmount} ₣</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Potential Winings</Text>
-                      <Text style={styles.lableend}>38.9  ₣</Text>
+                      <Text style={styles.lableend}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings}  ₣</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Bonus</Text>
-                      <Text style={styles.lableend}>10000   ₣</Text>
+                      <Text style={styles.lableend}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus}  ₣</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lableStat}>Status</Text>
@@ -66,9 +101,12 @@ function Betdetails()
                </View>
            </View>
         </View> 
+            </>
+          )
+        })}
         <View style={styles.childTwo}>
             <ScrollView style={styles.scroll}>
-                 <Bethistoryitems />
+                 {betdetailsitems}
                  <View style={styles.marginBox}>
 
                 </View>
@@ -102,16 +140,14 @@ const styles = StyleSheet.create({
    },
    lableone:{
      marginStart:sizes.size_5,
-     fontSize:sizes.size_12,
-     fontWeight:"600",
+     fontSize:sizes.size_13,
+     fontWeight:"700",
      color:colors.text_color
    },
     BadgeSm:{
         width:60,
         height:60,
-        flexDirection:"row",
         alignItems:"center",
-        justifyContent:"center",
         backgroundColor:colors.lighter_white,
         borderRadius:50
     },
@@ -135,11 +171,12 @@ const styles = StyleSheet.create({
       color:colors.text_color
     },
     icon:{
-      color:colors.secondary_color  
+      color:colors.secondary_color,
+ 
     },
     lable:{
         fontSize:sizes.size_16,
-        fontWeight:"600",
+        fontWeight:"800",
         color:colors.text_color
     },
     lableStat:{
@@ -160,9 +197,9 @@ const styles = StyleSheet.create({
     boxOne:{
       width:"100%",
       backgroundColor:colors.color_white,
-      paddingHorizontal:sizes.size_5,
+      paddingHorizontal:sizes.size_10,
       paddingTop:sizes.size_5,
-      paddingVertical:sizes.size_10,
+      paddingVertical:sizes.size_14,
       borderRadius:sizes.size_10,
       
     },
@@ -171,13 +208,13 @@ const styles = StyleSheet.create({
         backgroundColor:"#f9f9fb"
     }, 
     childOne:{
-        flex:3,
+        flex:5,
         backgroundColor:colors.lighter_white,
-        paddingHorizontal:sizes.size_4,
+        paddingHorizontal:sizes.size_5,
         marginTop:sizes.size_2
     },
     childTwo:{
-        flex:6,
+        flex:9,
         alignItems:"center"
     }
 })
