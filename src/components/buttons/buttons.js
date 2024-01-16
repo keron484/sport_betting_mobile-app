@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     marginStart:10,
     fontSize:16,
     fontWeight:"700",
+    color:colors.text_color
   },
   betbtn:{
     width:"30%",
@@ -82,10 +83,12 @@ const styles = StyleSheet.create({
   odds_text:{
     fontSize:15,
     fontWeight:"900",
+    color:colors.text_color
   },
   lable_text:{
     fontSize:15,
-    fontWeight:"700"
+    fontWeight:"700",
+    color:colors.text_color
   },
   textWhite:{
     color:colors.color_white,

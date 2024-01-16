@@ -12,7 +12,7 @@ export const betslipstyle = StyleSheet.create({
      title:{
         fontSize:18,
         fontWeight:"700",
-        color:"#2A4747"
+        color:colors.text_color
      },
      container:{
         flex:1,        
@@ -99,13 +99,14 @@ export const betslipstyle = StyleSheet.create({
         borderRadius:5,
         paddingHorizontal:5,
         marginTop:5,
-        paddingVertical:8
+        paddingVertical:8,
+        color:colors.text_color
     },
     balance:{
         fontSize:25,
         fontWeight:"900",
-        color:"#2A4747",
-        marginVertical:2
+        marginVertical:2,
+        color:colors.text_color
     },
     items_text:{
         flexDirection:"row",
@@ -114,12 +115,14 @@ export const betslipstyle = StyleSheet.create({
     fs_1:{
         fontSize:15,
         marginVertical:1,
-        fontWeight:"700"
+        fontWeight:"700",
+        color:colors.text_color
     },
     odds:{
         fontSize:15,
         fontWeight:"900",
-        marginVertical:1
+        marginVertical:1,
+        color:colors.text_color
     },
     box_two_dex:{
         flexDirection:"row",
@@ -128,7 +131,8 @@ export const betslipstyle = StyleSheet.create({
     },
     text_normal:{
         fontSize:14,
-        fontWeight:"800"
+        fontWeight:"800",
+        color:colors.text_color
      },
     btn_active:{
       width:"33%",
@@ -177,7 +181,7 @@ export const betslipstyle = StyleSheet.create({
         borderTopLeftRadius:50,
         borderBottomLeftRadius:50,
         backgroundColor:"#5cb85c",
-        width:"25%",
+        width:"10%",
         flexDirection:'row',
         alignItems:"center",
         justifyContent:"center"

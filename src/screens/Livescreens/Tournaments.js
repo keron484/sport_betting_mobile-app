@@ -40,6 +40,7 @@ function TournamentsLive(){
                      link={items.link}
                      league_title={items.league_title}
                      league_name={items.league_name}
+                     flag={items.flag}
                    /> 
                   </>
                )

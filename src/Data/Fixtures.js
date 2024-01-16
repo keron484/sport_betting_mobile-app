@@ -1,7 +1,7 @@
 export const PreMatchFixtures = {
     premier_league:[
             {
-                id:"ST044JUJWPMasdas",
+                id:"STCA2G93CK87YP8NWPM",
                 Eventtitle:"Premier League",
                 htname: "Arsenal",
                 htlogo: require('../assets/Logos/arsenal.png'),
@@ -10,8 +10,8 @@ export const PreMatchFixtures = {
                 awname: "Wolves",
                 market_1x2:[
                     {
-                        parentId:"",
-                        id:"1234023ESLADJSADA",
+                        parentId:"STCA2G93CK87YP8NWPM",
+                        id:"ST6T5VYG862FDS7PTPM",
                         market_lable:"W1",
                         odd: "1.28",
                         match_name:"Arsenal VS Wolves",
@@ -20,8 +20,8 @@ export const PreMatchFixtures = {
                         market_category:"1X2"
                     },
                     {
-                        
-                        id:"2239408239nklASDKA",
+                        parentId:"STCA2G93CK87YP8NWPM",
+                        id:"STQY0APQX40KV8M0WPM",
                         market_lable:"X",
                         odd: "5.50",
                         match_name:"Arsenal VS Wolves",
@@ -30,8 +30,8 @@ export const PreMatchFixtures = {
                         market_category:"1X2"
                     },
                     {
-                       
-                        id:"32893749234LASDKAJS",
+                        parentId:"STCA2G93CK87YP8NWPM",
+                        id:"STOAGHGJ949U32DGIPM",
                         market_lable:"W2",
                         odd: "10.00",
                         match_name:"Arsenal VS Wolves",
@@ -43,7 +43,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST044JLHAJKSHDASKDJHQW09234823",
+                id:"ST0JZYH5H7ASAIDQOPM",
                 Eventtitle: "Premier league",
                 htname: "Brentford",
                 htlogo: require('../assets/Logos/brentford.png'),
@@ -53,7 +53,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"ST4J0US0CM1SZFBWXPM",
                         market_lable:"W1",
                         odd: "1.45",
                         match_name:"Brentford VS Luton",
@@ -63,7 +63,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STKY170MSSRVBFK5EPM",
                         market_lable:"X",
                         odd: "4.50",
                         match_name:"Brentford VS Luton",
@@ -73,7 +73,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STEPRTO5FAZNO3MQZPM",
                         market_lable:"W2",
                         odd: "6.50",
                         match_name:"Brentford VS Luton",
@@ -85,7 +85,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST044JUAKSJDAKJSHDJASHDJ",
+                id:"STXLUCCV19T6S9L3LPM",
                 Eventtitle: "Premier league",
                 htname: "Burnley",
                 htlogo: require('../assets/Logos/burnley.png'),
@@ -95,7 +95,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STTP1Q6U263BNX23APM",
                         market_lable:"W1",
                         odd: "1.80",
                         match_name:"Burnley VS Sheffield United",
@@ -105,7 +105,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STQN78VZDIBXUUTWMPM",
                         market_lable:"X",
                         odd: "3.60",
                         match_name:"Burnley VS Sheffield United",
@@ -115,7 +115,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STRW7QP0TVP7RCBYQPM",
                         market_lable:"W2",
                         odd: "4.50",
                         match_name:"Burnley VS Sheffield United",
@@ -127,7 +127,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST0AASIOWERQOWIEQ3098493",
+                id:"ST4YR18WWNN6CL4I3PM",
                 Eventtitle: "Premier league",
                 htname: "Nottingham Forest",
                 htlogo: require('../assets/Logos/notts_forest.png'),
@@ -137,7 +137,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STKW5XVR31H6DHFNYPM",
                         market_lable:"W1",
                         odd: "2.75",
                         match_name:"Nottingham Forest VS Everton",
@@ -147,7 +147,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STZEFL2P9K6BOUM85PM",
                         market_lable:"X",
                         odd: "3.25",
                         match_name:"Nottingham Forest VS Everton",
@@ -157,7 +157,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"ST548XSXI1R2571I2PM",
                         market_lable:"W2",
                         odd: "2.60",
                         match_name:"Nottingham Forest VS Everton",
@@ -169,7 +169,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST04AsajkdaDAJHADSJK30892",
+                id:"STNCA2G93CK87YP8NPM",
                 Eventtitle: "Premier league",
                 htname: "Newcastle united",
                 htlogo: require('../assets/Logos/newcastle.png'),
@@ -179,7 +179,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STW6T5VYG862FDS7PPM",
                         market_lable:"W1",
                         odd: "1.80",
                         match_name:"Newcastle united VS Manchester united",
@@ -189,7 +189,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STTQY0APQX40KV8M0PM",
                         market_lable:"X",
                         odd: "3.60",
                         match_name:"Newcastle united VS Manchester united",
@@ -199,7 +199,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STWOAGHGJ949U32DGPM",
                         market_lable:"W2",
                         odd: "4.50",
                         match_name:"Newcastle united VS Manchester united",
@@ -211,7 +211,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"STASHDASODHASJD3298723ASD",
+                id:"STICT4ZOBDRBEOV9JPM",
                 Eventtitle: "Premier league",
                 htname: "Bournemouth",
                 htlogo: require('../assets/Logos/b_mouth.png'),
@@ -221,7 +221,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STA0JZYH5H7ASAIDQPM",
                         market_lable:"W1",
                         odd: "3.40",
                         match_name:"Bournemouth VS Aston Villa",
@@ -231,7 +231,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STO4J0US0CM1SZFBWPM",
                         market_lable:"X",
                         odd: "4.00",
                         match_name:"Bournemouth VS Aston Villa",
@@ -241,7 +241,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STXKY170MSSRVBFK5PM",
                         market_lable:"W2",
                         odd: "1.95",
                         match_name:"Bournemouth VS Aston Villa",
@@ -253,7 +253,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"STASHDAKSDH2093ashdajksjh",
+                id:"STEEPRTO5FAZNO3MQPM",
                 Eventtitle: "Premier league",
                 htname: "Chelsea",
                 htlogo: require('../assets/Logos/chelsea.png'),
@@ -263,7 +263,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STZXLUCCV19T6S9L3PM",
                         market_lable:"W1",
                         odd: "1.72",
                         match_name:"Chelsea VS Brighton",
@@ -273,7 +273,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STLTP1Q6U263BNX23PM",
                         market_lable:"X",
                         odd: "4.33",
                         match_name:"Chelsea VS Brighton",
@@ -283,7 +283,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STAQN78VZDIBXUUTWPM",
                         market_lable:"W2",
                         odd: "4.00",
                         match_name:"Chelsea VS Brighton",
@@ -295,7 +295,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST0ashdakshdASIOADOAISHD",
+                id:"STMRW7QP0TVP7RCBYPM",
                 Eventtitle: "Premier league",
                 htname: "Liverpool",
                 htlogo: require('../assets/Logos/liverpool.png'),
@@ -305,7 +305,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STQ4YR18WWNN6CL4IPM",
                         market_lable:"W1",
                         odd: "1.25",
                         match_name:"Liverpool VS Fulham",
@@ -315,7 +315,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"ST3KW5XVR31H6DHFNPM",
                         market_lable:"X",
                         odd: "6.50",
                         match_name:"Liverpool VS Fulham",
@@ -325,7 +325,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STYZEFL2P9K6BOUM8PM",
                         market_lable:"W2",
                         odd: "9.00",
                         match_name:"Liverpool VS Fulham",
@@ -337,7 +337,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"STALSDHASD2938ASDHASJHKLD",
+                id:"ST5548XSXI1R2571IPM",
                 Eventtitle: "Premier league",
                 htname: "West Ham",
                 htlogo: require('../assets/Logos/west_ham.png'),
@@ -347,7 +347,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"ST2NCA2G93CK87YP8PM",
                         market_lable:"W1",
                         odd: "1.25",
                         match_name:"Liverpool VS Fulham",
@@ -357,7 +357,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STNW6T5VYG862FDS7PM",
                         market_lable:"X",
                         odd: "6.50",
                         match_name:"Liverpool VS Fulham",
@@ -367,7 +367,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STPTQY0APQX40KV8MPM",
                         market_lable:"W2",
                         odd: "9.00",
                         match_name:"Liverpool VS Fulham",
@@ -379,7 +379,7 @@ export const PreMatchFixtures = {
     
               },
               {
-                id:"ST019ASDBVNLSDVS23048923",
+                id:"ST0WOAGHGJ949U32DPM",
                 Eventtitle: "Premier league",
                 htname: "Manchester city",
                 htlogo: require('../assets/Logos/man_city.png'),
@@ -389,7 +389,7 @@ export const PreMatchFixtures = {
                 market_1x2:[
                     {
                         parentId:"",
-                        id:"1234023ESLADJSADA",
+                        id:"STGICT4ZOBDRBEOV9PM",
                         market_lable:"W1",
                         odd: "1.28",
                         match_name:"Manchester city VS Tottenham",
@@ -399,7 +399,7 @@ export const PreMatchFixtures = {
                     },
                     {
                         
-                        id:"2239408239nklASDKA",
+                        id:"STJA0JZYH5H7ASAIDPM",
                         market_lable:"X",
                         odd: "6.00",
                         match_name:"Manchester city VS Tottenham",
@@ -409,7 +409,7 @@ export const PreMatchFixtures = {
                     },
                     {
                        
-                        id:"32893749234LASDKAJS",
+                        id:"STQO4J0US0CM1SZFBPM",
                         market_lable:"W2",
                         odd: "9.00",
                         match_name:"Manchester city VS Tottenham",
@@ -422,6 +422,50 @@ export const PreMatchFixtures = {
               }
           
 
+    ],
+    african_nations:[
+        {
+            id:"STCA2G93CK87YP8NWPM",
+            Eventtitle:"AFCON",
+            htname: "Burkina Faso",
+            htlogo: require('../assets/flags/burkina.png'),
+            atlogo: require('../assets/flags/mauritania.png'),
+            link: "/match-details",
+            awname: "Mauritania",
+            market_1x2:[
+                {
+                    parentId:"STCA2G93CK87YP8NWPM",
+                    id:"ST6T5VYG862FDS7PTPM",
+                    market_lable:"W1",
+                    odd: "1.28",
+                    match_name:"Burkina Faso VS Mauritania",
+                    match_date:"04 Nov 2023",
+                    kick_off_time:"12:00",
+                    market_category:"1X2"
+                },
+                {
+                    parentId:"STCA2G93CK87YP8NWPM",
+                    id:"STQY0APQX40KV8M0WPM",
+                    market_lable:"X",
+                    odd: "5.50",
+                    match_name:"Burkina Faso VS Mauritania",
+                    match_date:"04 Nov 2023",
+                    kick_off_time:"12:00",
+                    market_category:"1X2"
+                },
+                {
+                    parentId:"STCA2G93CK87YP8NWPM",
+                    id:"STOAGHGJ949U32DGIPM",
+                    market_lable:"W2",
+                    odd: "10.00",
+                    match_name:"Burkina Faso VS Mauritania",
+                    match_date:"04 Nov 2023",
+                    kick_off_time:"12:00",
+                    market_category:"1X2"
+                }
+             ]
+
+          },
     ],
     bundes_liga:[
         {

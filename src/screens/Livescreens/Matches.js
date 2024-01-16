@@ -87,12 +87,13 @@ const styles = StyleSheet.create({
    },
    score_area:{
      textAlign:"center",
-     color:"#2A4747"
+     color:colors.text_color
    },
    scores:{
      fontSize:25,
      fontWeight:"900",
-     letterSpacing:2
+     letterSpacing:2,
+     color:colors.text_color
    },
    team_box:{
      alignItems:"center"
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize:sizes.size_16,
-    fontWeight:"600",
+    fontWeight:"800",
     marginRight:sizes.size_30,
     color:colors.text_color
   }

@@ -158,7 +158,8 @@ const styles = StyleSheet.create({
        scores:{
          fontSize:25,
          fontWeight:"900",
-         letterSpacing:2
+         letterSpacing:2,
+         color:colors.text_color
        },
        team_box:{
          flexDirection:"row",

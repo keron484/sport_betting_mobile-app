@@ -6,8 +6,13 @@ import { Provider } from 'react-redux';
 import store from './src/Redux/Store/Store';
 import Login from './src/screens/Nonlivescreens.jsx/Login';
 import Signup from './src/screens/Nonlivescreens.jsx/Signup';
+import { useEffect } from 'react';
+import SplashScreen from 'react-native-splash-screen';
 const Stack = createNativeStackNavigator();
  const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
  
       <Provider store={store}>

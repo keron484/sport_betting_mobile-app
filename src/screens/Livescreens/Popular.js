@@ -215,14 +215,15 @@ const styles = StyleSheet.create({
   textstyle:{
     fontSize:12,
     fontWeight:"500",
-    color:"#2A4747"
+    color:colors.text_color
   },
   textlarge:{
     fontSize:25,
-    fontWeight:"900"
+    fontWeight:"900",
+    color:colors.text_color
   },
   text_color:{
-    color:"#2A4747"
+    color:colors.text_color
   },
   
 })

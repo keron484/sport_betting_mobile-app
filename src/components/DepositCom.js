@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
       textNormal:{
         fontSize:16,
         fontWeight:"600",
-        marginBottom:sizes.size_4
+        marginBottom:sizes.size_4,
+        color:colors.text_color
       },
       textWhite:{
         fontSize:16,
@@ -106,8 +107,8 @@ const styles = StyleSheet.create({
         paddingVertical:sizes.size_10,
         marginBottom:sizes.size_20,
         marginTop:sizes.size_15,
-        borderRadius:50,
-        backgroundColor:colors.secondary_color
+        backgroundColor:colors.secondary_color,
+        borderRadius:10
       },
       input:{
          width:"158%",
@@ -124,10 +125,11 @@ const styles = StyleSheet.create({
         justifyContent:"flex-start"
       },
       mtn:{
-        width:60,
-        height:55,
+        width:80,
+        height:80,
         marginTop:sizes.size_10,
-        marginBottom:sizes.size_10
+        marginBottom:sizes.size_10,
+        objectFit:"contain"
       },
       titleBox:{
          marginVertical:sizes.size_10,

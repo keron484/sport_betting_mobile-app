@@ -11,17 +11,15 @@ function CustomerSupport()
         <>
         <Navtop></Navtop>
         <View style={styles.navTwo}>
-               <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
+               <Pressable onPress={() => navigation.goBack()}>      
                  <Text>
                     <Icon name='chevron-back' size={25}></Icon>
                  </Text>
-               </View>
                </Pressable>
               <Text style={styles.title}>Customer Support</Text>
              <Text></Text>
           </View>
-        <View>
+        <View style={styles.container}>
             <Text>This is the customer support page</Text>
         </View>
          
@@ -29,11 +27,15 @@ function CustomerSupport()
     )
 }
 const styles = StyleSheet.create({
+    container:{
+      flex:1,
+      backgroundColor:colors.lighter_white
+    },
     navTwo:{
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
-        paddingVertical:sizes.size_10,
+        paddingVertical:sizes.size_15,
         backgroundColor:colors.color_white,
         width:"100%",
         paddingHorizontal:sizes.size_10

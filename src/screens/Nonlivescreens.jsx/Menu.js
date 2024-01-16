@@ -4,9 +4,18 @@ import Navtop from '../../components/Navtop';
 import { colors, sizes } from '../../components/Utils/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { loggedin } from '../../Redux/Slices/Authslice';
 function Menu()
 {
+   const isLoggedin = useSelector(loggedin);
    const navigation = useNavigation();
+   const toLogginpage = () => {
+        navigation.navigate("Login");
+   }
+   const todeposite = () => {
+       navigation.navigate("deposit");
+   }
    return(
     <>
        <Navtop></Navtop>
@@ -14,9 +23,9 @@ function Menu()
        <View style={styles.navTwo}>
           <Text style={styles.title}>Menu</Text>
        </View>
-       <ScrollView alwaysBounceVertical={true}>
+       <ScrollView alwaysBounceVertical={true} style={styles.paddingBox}>
        <Pressable style={styles.box} 
-            onPress={() => navigation.navigate("deposit")}
+            onPress={isLoggedin ? todeposite : toLogginpage}
        >
             <View style={styles.boxTwo}>
                 <View style={styles.badge}>
@@ -169,6 +178,9 @@ function Menu()
 
 }
 const styles  = StyleSheet.create({
+   paddingBox:{
+      paddingHorizontal:sizes.size_5
+   },
    marginBox:{
       width:"100%",
       paddingVertical:sizes.size_30,
@@ -196,7 +208,8 @@ const styles  = StyleSheet.create({
    },
    title:{
     fontSize:sizes.size_18,
-    fontWeight:"600"
+    fontWeight:"700",
+    color:colors.text_color
    },
    desBox:{
        marginLeft:10
@@ -215,7 +228,6 @@ const styles  = StyleSheet.create({
      justifyContent:"center"
   },
   container:{
-   paddingHorizontal:10,
    backgroundColor:"#fafafb",
    flex:1
   },

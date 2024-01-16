@@ -20,6 +20,22 @@ export const Bethistorybox =  (props) => {
      const numberString = number.toString();
      return numberString.includes(".");
   }
+  const toSettings = () => {
+    navigation.navigate("betsettings", {id:id})
+  }
+  const betStatus = props.winStatus;
+  const WinItem = () => {
+    return(
+      <>
+       <View style={styles.winItem}>
+         <Text style={styles.textGreen}>Paid Out</Text>
+         <Text>
+           <Icon name='checkmark-circle' size={25} style={styles.colorGreen}></Icon>
+         </Text>
+       </View>
+      </>
+    )
+  }
     return(
         <>
          <Pressable onPress={betdetails}>
@@ -27,7 +43,7 @@ export const Bethistorybox =  (props) => {
                  <View style={styles.bet_desc}>
                    <View style={styles.desc_items}>
                       <View style={styles.badge_lg}>
-                         <BethistoryIcon />
+                         <BethistoryIcon betStatus={betStatus}/>
                       </View>
                       <View>
                       <Text style={styles.deslable_one}>ID:STNKCQKDNUST{props.id}</Text>
@@ -38,11 +54,13 @@ export const Bethistorybox =  (props) => {
                       </View>
                    </View>
                    <View style={styles.icon_group}>
-                   <View style={styles.badge_icon}>
+                    <Pressable onPress={toSettings}>
+                    <View style={styles.badge_icon}>
                     <Text>
-                    <Icon name='ellipsis-horizontal' size={25} style={styles.icon_color}></Icon>
+                    <Icon name='settings-outline' size={25} style={styles.icon_color}></Icon>
                     </Text>
                    </View>
+                    </Pressable>
                    </View>
                  </View>
              <View style={styles.betdetails}>
@@ -56,15 +74,15 @@ export const Bethistorybox =  (props) => {
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Potential winnings</Text>
-                <Text style={styles.details_item}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings} ₣</Text>
+                <Text style={betStatus ? styles.validate  : styles.details_item}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Bonus</Text>
-                <Text style={styles.details_item}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus} ₣</Text>
+                <Text style={betStatus ? styles.validate  : styles.details_item}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus} ₣</Text>
                </View>
                <View style={styles.details_lable}>
                 <Text style={styles.details_item}>Status</Text>
-                <Text style={styles.statusValue}>Accepted</Text>
+                {betStatus ? <WinItem />  :  <Text style={styles.statusValue}>Accepted</Text>}
                </View>
              </View>
              </View>
@@ -76,6 +94,19 @@ export const Bethistorybox =  (props) => {
     )
 }
 const styles = StyleSheet.create({
+    colorGreen:{
+      color:colors.color_green,
+      marginHorizontal:5
+    },
+    textGreen:{
+      color:colors.color_green,
+      fontSize:18,
+      fontWeight:"900"
+    },
+    winItem:{
+      flexDirection:"row",
+      alignItems:"center"
+    },
     statusValue:{
        marginVertical:3,
        fontSize:16,
@@ -110,6 +141,12 @@ const styles = StyleSheet.create({
             fontSize:16,
             fontWeight:"900",
             color:colors.text_color
+          },
+          validate:{
+            marginVertical:3,
+            fontSize:16,
+            fontWeight:"900",
+            color:colors.color_green
           },
           betdetails:{
            marginTop:5,
@@ -344,13 +381,18 @@ export const Bethistoryitems = (props) => {
    color:colors.text_color,
    fontSize:sizes.size_16
   },
+  textLength:{
+     width:90,
+  }
   }
     return(
         <>
         <View style={styles.itemBox}>
                      <View style={styles.justifyBetween}>
                      <View style={styles.TeamBox}>
+                        <View style={styles.textLength}>
                         <Text style={styles.htname}>{props.htname}</Text>
+                        </View>
                         <View style={styles.circleOne}>
                             <View style={styles.circleTwo}>
                             <Image style={styles.logo} source={props.htlogo}></Image>
@@ -366,7 +408,9 @@ export const Bethistoryitems = (props) => {
                             <Image style={styles.logo} source={props.atlogo}></Image>
                             </View>
                         </View>
+                        <View style={styles.textLength}>
                          <Text style={styles.awteamname}>{props.awname}</Text>
+                        </View>
                      </View>
                      </View>
                      <View style={styles.itemChildone}>

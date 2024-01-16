@@ -42,7 +42,7 @@ function Deposite()
                     </View>
                 </Pressable>
                 <Pressable style={styles.boxTwo}>
-                <Image source={require('../../assets/Logos/mtn_logo.png')} style={styles.logo}></Image>
+                <Image source={require('../../assets/Logos/orange_logo.png')} style={styles.logo}></Image>
                     <View style={styles.titleBox}>
                       <Text style={styles.textWhite}>Orange</Text>
                     </View>
@@ -97,14 +97,6 @@ const styles = StyleSheet.create({
       paddingTop:5,
       backgroundColor:colors.lighter_white
    },
-   navtwo:{
-      backgroundColor:"#fff",
-      flexDirection:"row",
-      alignItems:"center",
-      justifyContent:"center",
-      paddingHorizontal:10,
-      paddingVertical:13
-   },
    title:{
       fontSize:16,
       fontWeight:"600",
@@ -116,7 +108,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     justifyContent:"space-between",
     alignItems:"center",
-    paddingVertical:sizes.size_10,
+    paddingVertical:sizes.size_15,
     backgroundColor:colors.color_white,
     width:"100%",
     paddingHorizontal:sizes.size_10

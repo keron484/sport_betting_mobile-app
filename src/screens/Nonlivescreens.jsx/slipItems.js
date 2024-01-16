@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity} from "react-native";
 import { betslipstyle } from "../../styles/styles";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { slipActions } from "../../Redux/Slices/BetSlipslice";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 function Slipitems(props){
     const id = props.id
     const dispatch = useDispatch();

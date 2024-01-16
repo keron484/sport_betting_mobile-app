@@ -54,6 +54,18 @@ function Betdetails({route})
               const numberString = number.toString();
               return numberString.includes(".");
           }
+          const WinItem = () => {
+            return(
+              <>
+               <View style={styles.winItem}>
+                 <Text style={styles.textGreen}>Paid Out</Text>
+                 <Text>
+                   <Icon name='checkmark-circle' size={25} style={styles.colorGreen}></Icon>
+                 </Text>
+               </View>
+              </>
+            )
+          }
           return(
             <>
               <View style={styles.childOne}>
@@ -69,7 +81,7 @@ function Betdetails({route})
                </View>
                <View style={styles.BoxTwo}>
                  <View style={styles.BadgeSm}>
-                    <BethistoryIcon />
+                    <BethistoryIcon betStatus={item.winStatus} />
                  </View>
                  <View>
                      <Text style={styles.lableone}>ID: {item.id}STJSDAJDKJIORWE</Text>
@@ -88,15 +100,16 @@ function Betdetails({route})
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Potential Winings</Text>
-                      <Text style={styles.lableend}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings}  ₣</Text>
+                      <Text style={item.winStatus ? styles.validate  :  styles.lableend}>{isDecimal(potWinings) ? potWinings.toFixed(2) : potWinings}  ₣</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lable}>Bonus</Text>
-                      <Text style={styles.lableend}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus}  ₣</Text>
+                      <Text style={item.winStatus ? styles.validate  :  styles.lableend}>{isDecimal(bonus) ? bonus.toFixed(2) : bonus}  ₣</Text>
                    </View>
                    <View style={styles.desItemOne}>
                       <Text style={styles.lableStat}>Status</Text>
-                      <Text style={styles.status}>Accepted</Text>
+                      {item.winStatus ?  <WinItem />  : <Text style={styles.status}>Accepted</Text>}
+                      
                    </View>
                </View>
            </View>
@@ -126,6 +139,19 @@ function Betdetails({route})
     )
 }
 const styles = StyleSheet.create({
+  colorGreen:{
+    color:colors.color_green,
+    marginHorizontal:5
+  },
+  textGreen:{
+    color:colors.color_green,
+    fontSize:18,
+    fontWeight:"900"
+  },
+  winItem:{
+    flexDirection:"row",
+    alignItems:"center"
+  },
     scroll:{
         width:"100%",
         paddingHorizontal:sizes.size_5
@@ -133,6 +159,11 @@ const styles = StyleSheet.create({
    lableend:{
     fontWeight:"900",
     color:colors.text_color,
+    fontSize:sizes.size_16
+   },
+   validate:{
+    fontWeight:"900",
+    color:colors.color_green,
     fontSize:sizes.size_16
    },
    desBox:{

@@ -10,16 +10,18 @@ function Userprofile()
 {
   const balance = useSelector(user_balance);
   const navigation = useNavigation();
+  const isDecimal = (number) => {
+    const numberString = number.toString();
+    numberString.includes(".");
+  }
     return(
         <>
           <Navtop></Navtop>
           <View style={styles.navTwo}>
                <Pressable onPress={() => navigation.goBack()}>
-               <View style={styles.badge}>
                  <Text>
                     <Icon name='chevron-back' size={25}></Icon>
                  </Text>
-               </View>
                </Pressable>
               <Text style={styles.title}>My Account</Text>
              <Text></Text>
@@ -30,7 +32,7 @@ function Userprofile()
              <View style={styles.boxOne}> 
                 <View>
                   <Text>Account Balance</Text>
-                  <Text style={styles.balance}>{balance} F</Text>
+                  <Text style={styles.balance}>{isDecimal(balance) ? balance.toFixed(2) : balance} ₣</Text>
                 </View>
                 <View>
                    <Text> 
@@ -259,7 +261,7 @@ const styles = StyleSheet.create({
   },
    title:{
      fontSize:sizes.size_16,
-     fontWeight:"600",
+     fontWeight:"800",
      marginRight:sizes.size_30,
      color:colors.text_color
    },
@@ -267,7 +269,7 @@ const styles = StyleSheet.create({
      flexDirection:"row",
      justifyContent:"space-between",
      alignItems:"center",
-     paddingVertical:sizes.size_10,
+     paddingVertical:sizes.size_15,
      backgroundColor:colors.color_white,
      width:"100%",
      paddingHorizontal:sizes.size_10

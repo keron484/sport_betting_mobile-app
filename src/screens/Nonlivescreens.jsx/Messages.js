@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     },
     msgBody:{
        fontSize:sizes.size_17,
-       fontWeight:"600"
+       fontWeight:"600",
+       color:colors.text_color
     },
     msgBoxtitle:{
       fontSize:sizes.size_18,
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
       },
       title:{
         fontSize:sizes.size_16,
-        fontWeight:"600",
+        fontWeight:"800",
         marginRight:sizes.size_30,
         color:colors.text_color
       }

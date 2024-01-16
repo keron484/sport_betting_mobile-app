@@ -68,7 +68,8 @@ export const Ticketicon = () => {
         </>
     )
 }
-function BethistoryIcon(){
+function BethistoryIcon(props){
+    const status = props.betStatus;
     const styles = StyleSheet.create({
         iconOne:{
            position:"relative",
@@ -84,12 +85,26 @@ function BethistoryIcon(){
             borderRadius:50,
             color:"#4785b8"
         },
+        iconone:{
+            position:"relative",
+            top:10,
+            right:5,
+            color:colors.color_green
+         },
+         icontwo:{
+             position:"relative",
+             backgroundColor:colors.lighter_white,
+             left:2,
+             bottom:9,
+             borderRadius:50,
+             color:colors.color_green
+         }
     })
     return(
         <>
-         <Icon name='ticket' size={35} style={styles.iconOne}>
+         <Icon name='ticket' size={35} style={status ? styles.iconone :  styles.iconOne}>
          </Icon>
-         <Icon name='checkmark-circle' size={24} style={styles.iconTwo}></Icon>
+         <Icon name='checkmark-circle' size={24} style={status ? styles.icontwo  : styles.iconTwo}></Icon>
         </>
     )
 }

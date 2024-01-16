@@ -103,11 +103,12 @@ const styles = StyleSheet.create({
       textstyle:{
         fontSize:12,
         fontWeight:"500",
-        color:"#2A4747"
+       color:colors.text_color
       },
       textlarge:{
         fontSize:25,
-        fontWeight:"bold"
+        fontWeight:"bold",
+        color:colors.text_color
       },
       betbtn:{
         width:"30%",
@@ -121,13 +122,15 @@ const styles = StyleSheet.create({
       odds_text:{
         fontSize:15,
         fontWeight:"700",
+        color:colors.text_color
       },
       lable_text:{
         fontSize:14,
-        fontWeight:"500"
+        fontWeight:"500",
+        color:colors.text_color
       },
       text_color:{
-        color:"#2A4747"
+       color:colors.text_color
       },
       btn_box:{
         flexDirection:"row",
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
       },
       score_area:{
         textAlign:"center",
-        color:"#2A4747"
+       color:colors.text_color
       },
       scores:{
         fontSize:40,

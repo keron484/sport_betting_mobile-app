@@ -1,9 +1,9 @@
-import { Text, View, StyleSheet,  Pressable } from 'react-native'
+import { Text, View, StyleSheet,  Pressable, Image } from 'react-native'
 import React from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 import {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { colors } from './Utils/colors';
+import { colors, sizes } from './Utils/colors';
 function Tournamentitem(props)
 {
    const navigation = useNavigation();
@@ -12,24 +12,31 @@ function Tournamentitem(props)
        setIshowing(prevalue => !prevalue);
     }
     
-    const championships = props.leagues
+    const championships = props.leagues;
+    const league_title = props.league_title;
+    const league_name= props.league_name;
+    const toMatches = () => {
+      navigation.navigate("matches", {league_title:league_title, league_name:league_name})
+    }
     return(
         <>
-         <Pressable onPress={Toggle}>
+         <Pressable onPress={championships <= 0 ? toMatches : Toggle}>
          <View style={styles.box_one} key={props.id}>
              <View style={styles.box_item}>
              <View style={styles.badge_sm}>
-               <Text>IC</Text>  
+             <Image source={props.flag} style={styles.flag}></Image>  
              </View>
             <Text style={styles.boxitem_lable}>{props.title}</Text>
              </View>
-            <View style={styles.badge_xsm}>
-               <Text>
+            <View style={championships.length <= 0 ? styles.display_none : styles.badge_xsm} >
+               <Text style={styles.count}>{championships.length}</Text>
+               <Text style={styles.marginHor}>
                   <Icon name="chevron-down-outline" size={20} style={isshowing ? styles.rotate : null}></Icon>
                </Text>
              </View>
            </View>
          </Pressable>
+           <View style={championships.length <= 0 ? styles.display_none : null}>
            <View style={isshowing ? styles.display_none : null}>
            <View style={styles.box_two}>
               {championships.map((items) => {
@@ -38,7 +45,7 @@ function Tournamentitem(props)
                      <Pressable onPress={() => navigation.navigate(items.link, {league_title:items.league_title, league_name:items.league_name})}>
                      <View style={styles.dropdown_item}>
                        <View style={styles.badge_sm}>
-                         <Text>ic</Text>
+                           <Image source={items.flag} style={styles.flag}></Image>
                           </View>
                           <Text style={styles.boxitem_lable}>{items.lable}</Text>
                        </View>
@@ -48,12 +55,24 @@ function Tournamentitem(props)
               })}
            </View>
            </View>
+           </View>
         </>
     )
 }
 const styles = StyleSheet.create({
-    rotate:{
-   
+   marginHor:{
+      marginHorizontal:sizes.size_10
+   },
+   count:{
+      color:colors.text_color,
+      fontSize:14,
+      fontWeight:"600"
+   },
+    flag:{
+      width:"75%",
+      height:"75%",
+      objectFit:"contain",
+      backgroundColor:colors.lighter_white,
     },
     display_none:{
      display:"none"
@@ -62,7 +81,6 @@ const styles = StyleSheet.create({
         width:40,
         height:40,
         borderRadius:40,
-        backgroundColor:"#f9f9f9",
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center"
@@ -87,7 +105,6 @@ const styles = StyleSheet.create({
        width:35,
        height:35,
        borderRadius:40,
-       backgroundColor:"#f9f9f9",
        flexDirection:"row",
        alignItems:"center",
        justifyContent:"center",

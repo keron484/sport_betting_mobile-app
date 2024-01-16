@@ -13,7 +13,15 @@ import { useNavigation } from "@react-navigation/native";
 import { slides } from "../../Redux/Slices/BetSlipslice";
 import PromoBetslip from "./PromoBetslip";
 import BonusBetslip from "./BonusBetslip";
+import { loggedin } from "../../Redux/Slices/Authslice";
 function Betslip(){
+     
+    const getCurrentTimeAndDate = () => {
+        const currentDateTime = new Date();
+        const time = currentDateTime.toLocaleTimeString();
+        const date = currentDateTime.toLocaleDateString();
+        return `${date} ${time}`;
+      };
     const [isshowing, setIshowing] = useState(false);
     function toggle() {
         setIshowing(prevalue => !prevalue);
@@ -55,7 +63,7 @@ function Betslip(){
             bonus_calcu,
             potential_wininings,
             totalOdds,
-            date:"12-29-2023",
+            date: getCurrentTimeAndDate(),
             bettype: num_events <= 1 ? "Single" : "Accumulator",
             points:num_events <= 1 ? "0" :  "1", 
             selected_events
@@ -231,12 +239,14 @@ function Betslip(){
         fs_1:{
             fontSize:15,
             marginVertical:1,
-            fontWeight:"700"
+            fontWeight:"700",
+            color:colors.text_color
         },
         odds:{
             fontSize:15,
             fontWeight:"900",
-            marginVertical:1
+            marginVertical:1,
+            color:colors.text_color
         },
         box_two_dex:{
             flexDirection:"row",
@@ -245,7 +255,8 @@ function Betslip(){
         },
         text_normal:{
             fontSize:14,
-            fontWeight:"800"
+            fontWeight:"900",
+            color:colors.text_color
          },
         btn_active:{
           width:"33%",
@@ -337,6 +348,10 @@ function Betslip(){
         }
     })
     const navigation = useNavigation();
+    const loginState = useSelector(loggedin);
+    const tologinpage = () => {
+         navigation.navigate("Login");
+    }
     return(
      <>
       {linkState.betslip && <> 
@@ -412,7 +427,7 @@ function Betslip(){
                         onChangeText={(newvalue) => setStake(newvalue)}
                         value={stake}
                        ></TextInput>
-                        <TouchableOpacity style={styles.bet_btn} onPress={Placebet}>
+                        <TouchableOpacity style={styles.bet_btn} onPress={loginState ? Placebet :  tologinpage }>
                         <View >
                            <Text style={styles.btn_name}>Place Bet</Text>
                        </View>

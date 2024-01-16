@@ -99,22 +99,25 @@ const styles = StyleSheet.create({
      },
      titleTwo:{
       fontSize:sizes.size_19,
-      marginVertical:10
+      marginVertical:10,
+      color:colors.text_color  
      },
      input:{
       borderWidth:sizes.size_1,
-      borderColor:"#f9f9f9",
+      borderColor:"#ccc",
       fontSize:16,
       fontWeight:"500",
       paddingStart:sizes.size_10,
-      borderRadius:sizes.size_15,
+      borderRadius:sizes.size_10,
       shadowColor:"#f9f9f9",
-      elevation:30    
+      elevation:35,
+      color:colors.text_color    
     },
      lable:{
         fontSize:sizes.size_16,
         marginBottom:sizes.size_10,
-        fontWeight:"600"
+        fontWeight:"600",
+        color:colors.text_color
      },
      inputBox:{
        marginVertical:sizes.size_15,
@@ -139,7 +142,8 @@ const styles = StyleSheet.create({
      },
      desc:{
         fontSize:sizes.size_25,
-        fontWeight:"800"
+        fontWeight:"800",
+        color:colors.text_color
      },
      logo:{
        textAlign:"center",
@@ -151,11 +155,13 @@ const styles = StyleSheet.create({
      },
      link:{
        color:"steelblue",
-       fontSize:16
+       fontSize:16,
+       color:colors.text_color  
      },
      titleThree:{
         textAlign:"center",
-        fontSize:16
+        fontSize:16,
+        color:colors.text_color  
      },
      thirdBox:{
          flexDirection:"row",
@@ -179,7 +185,8 @@ const styles = StyleSheet.create({
         fontSize:sizes.size_16,
         textTransform:"capitalize",
         fontWeight:"500",
-        marginVertical:sizes.size_10
+        marginVertical:sizes.size_10,
+        color:colors.text_color  
      },
      container:{
         flex:1,

@@ -41,11 +41,25 @@ const Tournaments = () => {
                      title={items.title}
                      leagues={items.leagues}
                      link={items.link}
+                     flag={items.flag}
+                     league_name={items.league_name}
+                     league_title={items.league_title}
                    /> 
                   </>
                )
             })}
-           
+           <View style={styles.marginBox}>
+
+           </View>
+           <View style={styles.marginBox}>
+
+           </View>
+           <View style={styles.marginBox}>
+
+           </View>
+           <View style={styles.marginBox}>
+
+           </View>
           </ScrollView>
          
       </View>
@@ -119,13 +133,14 @@ const styles = StyleSheet.create({
     marginTop:5,
      fontSize:18,
      fontWeight:"700",
-     color:"#2A4747"
+     color:colors.text_color
   },
   lable_text:{
    marginStart:2,
    fontSize:18,
    fontWeight:"700",
-   marginVertical:10
+   marginVertical:10,
+   color:colors.text_color
   }
 })
 export default Tournaments;

@@ -31,6 +31,7 @@ function Bethistory()
           stake={items.stake}
           potential_wininings={items.potential_wininings}
           bonus_calcu={items.bonus_calcu}
+          winStatus={items.winStatus}
      />
       )
 
@@ -144,7 +145,8 @@ const styles = StyleSheet.create({
     balance:{
       flexDirection:"row",
       alignItems:"center",
-      justifyContent:"space-between"
+      justifyContent:"space-between",
+      color:colors.text_color
     },
     icon:{
       color:colors.color_green

@@ -34,7 +34,7 @@ function Livematchbox() {
         {Livedata.map((items) => {
             return(
                 <>
-                   <Pressable onPress={() => {navigation.navigate('matchdetailslive', {id:items.id})}}>
+                   <Pressable onPress={() => {navigation.navigate('matchdetailslive', {id:items.id})}} key={items.id}>
                    <View style={styles.matchbox}>
           <View style={styles.match_lable}>
             <View style={styles.lable_two}>
@@ -62,7 +62,7 @@ function Livematchbox() {
             </View>
             <View style={{alignItems:"center", marginHorizontal:5, marginTop:10}}>
               <Text style={styles.scores}>{items.htscore}:{items.atscore}</Text>
-              <Text style={styles.lable}>{items.timelable},  {formatTime(time)} </Text>
+              <Text style={styles.lable}>{time < 45 ? "1-half" : "2-half"},  {formatTime(time)} </Text>
             </View>
             <View style={styles.team_box}>
             <View style={styles.teamcircleone}>
@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
   odds_text:{
     fontSize:15,
     fontWeight:"800",
+    color:colors.text_color
   },
       btn_box:{
        flexDirection:"row",
@@ -152,7 +153,8 @@ const styles = StyleSheet.create({
        },
        lable:{
        fontSize:15,
-       fontWeight:"700"
+       fontWeight:"700",
+       color:colors.text_color
        }, 
       teams_logo_area:{
         marginBottom:5,
@@ -161,12 +163,13 @@ const styles = StyleSheet.create({
       },
       score_area:{
         textAlign:"center",
-        color:"#2A4747"
+        color:colors.text_color
       },
       scores:{
         fontSize:40,
         fontWeight:"900",
-        letterSpacing:2
+        letterSpacing:2,
+        color:colors.text_color
       },
       team_box:{
         alignItems:"center",
@@ -189,7 +192,8 @@ const styles = StyleSheet.create({
       text_lable:{
         marginHorizontal:5,
         fontSize:14,
-        fontWeight:"600"
+        fontWeight:"600",
+        color:colors.text_color
       },
       match_lable:{
         flexDirection:"row",
@@ -204,7 +208,8 @@ const styles = StyleSheet.create({
       },
       team_name:{
         fontSize:15,
-        fontWeight:"800"
+        fontWeight:"800",
+        color:colors.text_color
       },
       team_logo:{
           width:"70%",

@@ -27,7 +27,8 @@ import { useSelector } from 'react-redux';
 import MatchdetailsTwo from '../screens/Livescreens/Matchdetailstwo'
 import Betdetails from '../screens/Nonlivescreens.jsx/Betdetails';
 import { loggedin } from '../Redux/Slices/Authslice';
-import BonusbetHistoryDetails from '../screens/Nonlivescreens.jsx/BonusbetHisDetails'
+import BonusbetHistoryDetails from '../screens/Nonlivescreens.jsx/BonusbetHisDetails';
+import Betsetting from '../screens/Nonlivescreens.jsx/BetSettings'
 const Stack = createNativeStackNavigator();
 const MatchStack = () => {
   
@@ -106,6 +107,10 @@ const BethistoryStack = () => {
          >
         </Stack.Screen>
         <Stack.Screen name='betdetailsbonus' component={BonusbetHistoryDetails}
+          options={{headerShown: false}}
+         >
+        </Stack.Screen>
+        <Stack.Screen name='betsettings' component={Betsetting}
           options={{headerShown: false}}
          >
         </Stack.Screen>
