@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   btnSignup:{
       width:"50%",
-      paddingVertical:8,
+      paddingVertical:5,
       borderRadius:50,
       flexDirection:"row",
       alignItems:"center",
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   btnLoggin:{
     width:"50%",
-    paddingVertical:8,
+    paddingVertical:5,
     borderRadius:50,
     flexDirection:"row",
     alignItems:"center",
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     borderRadius:20,
     backgroundColor:"#fff",
     marginHorizontal:5,
-    paddingVertical:8,
+    paddingVertical:5,
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"center",
@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
     backgroundColor:"#f9f9f9",
     alignItems:"center",
     justifyContent:"center",
-    flex:1
+    flex:1,
+    paddingHorizontal:5
   },
   navbar:{
     alignItems:"center",    

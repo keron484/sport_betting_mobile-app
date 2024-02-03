@@ -3,18 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Tabnavigation from './src/navigation/Tabnavigation';
 import { Provider } from 'react-redux';
-import store from './src/Redux/Store/Store';
+import {store, persistor} from './src/Redux/Store/Store';
 import Login from './src/screens/Nonlivescreens.jsx/Login';
 import Signup from './src/screens/Nonlivescreens.jsx/Signup';
-import { useEffect } from 'react';
-import SplashScreen from 'react-native-splash-screen';
+import { PersistGate } from 'redux-persist/integration/react';
 const Stack = createNativeStackNavigator();
  const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
   return (
  
+    <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
         <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
@@ -44,6 +41,7 @@ const Stack = createNativeStackNavigator();
         </Stack.Navigator>
       </NavigationContainer>
       </Provider>
+    </PersistGate>
  
   )
 }

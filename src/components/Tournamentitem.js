@@ -42,7 +42,7 @@ function Tournamentitem(props)
               {championships.map((items) => {
                 return(
                     <>
-                     <Pressable onPress={() => navigation.navigate(items.link, {league_title:items.league_title, league_name:items.league_name})}>
+                     <Pressable onPress={() => navigation.navigate(items.link, {league_title:items.league_title, league_name:items.league_name})} key={items.id}>
                      <View style={styles.dropdown_item}>
                        <View style={styles.badge_sm}>
                            <Image source={items.flag} style={styles.flag}></Image>

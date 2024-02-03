@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
   market_name:{
     marginStart:10,
     fontSize:16,
-    fontWeight:"700",
+    fontWeight:"900",
+    color:colors.text_color
   },
   betbtn:{
     width:"30%",
@@ -238,7 +239,7 @@ const styles = StyleSheet.create({
         width:"100%",
         borderRadius:10,
         backgroundColor:"#fff",
-        marginTop:5,
+        marginTop:7,
         justifyContent:"center",
         elevation:5,
         

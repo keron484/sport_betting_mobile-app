@@ -34,7 +34,7 @@ const MatchStack = () => {
   
   return(
      <Stack.Navigator>
-       <Stack.Screen name='Tournaments' component={Tournaments}
+       <Stack.Screen name='tournaments_two' component={Tournaments}
         options={{headerShown: false}}
        >
        </Stack.Screen>
@@ -65,7 +65,7 @@ const Menustack = () =>{
   const logginStatus = useSelector(loggedin);
    return(
        <Stack.Navigator>
-          <Stack.Screen name='menu' component={Menu}
+          <Stack.Screen name='menu_two' component={Menu}
            options={{headerShown: false}}
           ></Stack.Screen>
           <Stack.Screen name='deposit' component={Deposite}
@@ -98,7 +98,7 @@ const Menustack = () =>{
 const BethistoryStack = () => {
   return(
      <Stack.Navigator>
-        <Stack.Screen name='My Bets' component={Bethistory}
+        <Stack.Screen name='my_bets' component={Bethistory}
          options={{headerShown:false}}
         >    
         </Stack.Screen>
@@ -122,7 +122,7 @@ const Popularstack = () =>{
     return(
       
         <Stack.Navigator>
-          <Stack.Screen name='Popular' component={Popular}
+          <Stack.Screen name='popular_two' component={Popular}
         options={{headerShown: false}}
        >
        </Stack.Screen>

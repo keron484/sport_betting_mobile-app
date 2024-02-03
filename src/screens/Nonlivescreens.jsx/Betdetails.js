@@ -139,6 +139,12 @@ function Betdetails({route})
     )
 }
 const styles = StyleSheet.create({
+  marginBox:{
+    width:"100%",
+    paddingVertical:sizes.size_30,
+    backgroundColor:colors.lighter_white,
+    marginBottom:sizes.size_10
+  },
   colorGreen:{
     color:colors.color_green,
     marginHorizontal:5
